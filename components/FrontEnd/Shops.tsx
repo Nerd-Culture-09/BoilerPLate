@@ -8,7 +8,7 @@ import Navbar from "./Navbar"
 import Footer from "./Footer"
 
 const Shops = () => {
-    const imageUrl = "https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg";
+    const imageUrl = "/clothing.jpg";
     const imageUrl2 = "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg";
     const imageUrl3 = "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg";
   return (
