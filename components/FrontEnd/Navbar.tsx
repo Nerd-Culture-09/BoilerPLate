@@ -157,7 +157,6 @@ export default function Navbar() {
           <span className="sr-only">Open menu</span>
           <Bars3Icon aria-hidden="true" className="h-6 w-6" />
         </button>
-
         {/* Logo */}
         <div className="ml-4 flex lg:ml-0">
           <a href="#">
