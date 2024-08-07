@@ -2,10 +2,10 @@
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
 import Footer from "./Footer"
 
-const Shops = () => {
-    const imageUrl = "/clothing.jpg";
-    const imageUrl2 = "/hoodie-img.jpg";
-    const imageUrl3 = "/tees-img.jpg";
+const FoodShops = () => {
+    const imageUrl = "/fast-food.jpg";
+    const imageUrl2 = "/pizza.jpg";
+    const imageUrl3 = "/soft-drinks.jpg";
   return (
       <div>
         <div className="px-72">
@@ -19,19 +19,19 @@ const Shops = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl}>
-                    <p className="font-bold text-xl">Nucleus Garments</p>
+                    <p className="font-bold text-xl">Nucleus Burgers</p>
                     <p className="font-normal text-sm">Shop</p>
                 </DirectionAwareHover>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl2}>
-                    <p className="font-bold text-xl">Nucleus Fashion</p>
+                    <p className="font-bold text-xl">Nucleus Pizza</p>
                     <p className="font-normal text-sm">Shop</p>
                 </DirectionAwareHover>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl3}>
-                    <p className="font-bold text-xl">Nucleus Apparel</p>
+                    <p className="font-bold text-xl">Nucleus Beverages</p>
                     <p className="font-normal text-sm">Shop</p>
                 </DirectionAwareHover>
             </div>
@@ -78,4 +78,4 @@ const Shops = () => {
     </div>
   )
 }
-export default Shops;
+export default FoodShops;

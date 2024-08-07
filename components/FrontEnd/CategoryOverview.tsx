@@ -16,16 +16,16 @@ const callouts = [
   {
     name: 'Clothing',
     description: 'Elevate Your Everyday Wardrobe',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
+    imageSrc: '/hoodie-img.jpg',
     imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
     href: '/view',
   },
   {
     name: 'Food',
     description: 'Gourmet Goodness, Right at Home',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
+    imageSrc: '/grocery-food.jpg',
     imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
-    href: '#',
+    href: '/food-shop-view',
   },
   {
     name: 'Accessories',
