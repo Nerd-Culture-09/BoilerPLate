@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Dialog,
   DialogBackdrop,
@@ -159,7 +161,7 @@ export default function Navbar() {
         </button>
         {/* Logo */}
         <div className="ml-4 flex lg:ml-0">
-          <a href="#">
+          <a href="/">
             <span className="sr-only">Your Company</span>
             <img
               alt=""
@@ -266,10 +268,10 @@ export default function Navbar() {
             <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
               <img
                 alt=""
-                src="https://tailwindui.com/img/flags/flag-canada.svg"
+                src="les.png"
                 className="block h-auto w-5 flex-shrink-0"
               />
-              <span className="ml-3 block text-sm font-medium">CAD</span>
+              <span className="ml-3 block text-sm font-medium">LES</span>
               <span className="sr-only">, change currency</span>
             </a>
           </div>

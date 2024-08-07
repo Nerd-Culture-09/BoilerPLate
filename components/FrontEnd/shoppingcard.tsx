@@ -1,141 +1,217 @@
-'use client'
+import React from 'react';
 
-import { useState } from 'react'
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-]
-
-export default function Card() {
-  const [open, setOpen] = useState(true)
-
+const ShoppingCard: React.FC = () => {
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
-      <DialogBackdrop
-        transition
-        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
-      />
-
-      <div className="fixed inset-0 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <DialogPanel
-              transition
-              className="pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:translate-x-full sm:duration-700"
+    <div>
+      <div
+        className="w-full h-full bg-black dark:bg-gray-900 bg-opacity-90 top-0 overflow-y-auto overflow-x-hidden fixed sticky-0"
+        id="chec-div"
+      >
+        <div
+          className="w-full absolute z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700"
+          id="checkout"
+        >
+          <div className="flex items-end lg:flex-row flex-col justify-end" id="cart">
+            <div
+              className="lg:w-1/2 md:w-8/12 w-full lg:px-8 lg:py-14 md:px-6 px-4 md:py-8 py-4 bg-white dark:bg-gray-800 overflow-y-hidden overflow-x-hidden lg:h-screen h-auto"
+              id="scroll"
             >
-              <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                  <div className="flex items-start justify-between">
-                    <DialogTitle className="text-lg font-medium text-gray-900">Shopping cart</DialogTitle>
-                    <div className="ml-3 flex h-7 items-center">
-                      <button
-                        type="button"
-                        onClick={() => setOpen(false)}
-                        className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
-                      >
-                        <span className="absolute -inset-0.5" />
-                        <span className="sr-only">Close panel</span>
-                        <XMarkIcon aria-hidden="true" className="h-6 w-6" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="mt-8">
-                    <div className="flow-root">
-                      <ul role="list" className="-my-6 divide-y divide-gray-200">
-                        {products.map((product) => (
-                          <li key={product.id} className="flex py-6">
-                            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                              <img
-                                alt={product.imageAlt}
-                                src={product.imageSrc}
-                                className="h-full w-full object-cover object-center"
-                              />
-                            </div>
-
-                            <div className="ml-4 flex flex-1 flex-col">
-                              <div>
-                                <div className="flex justify-between text-base font-medium text-gray-900">
-                                  <h3>
-                                    <a href={product.href}>{product.name}</a>
-                                  </h3>
-                                  <p className="ml-4">{product.price}</p>
-                                </div>
-                                <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                              </div>
-                              <div className="flex flex-1 items-end justify-between text-sm">
-                                <p className="text-gray-500">Qty {product.quantity}</p>
-
-                                <div className="flex">
-                                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
-                                    Remove
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+              <div
+                className="flex items-center text-gray-500 hover:text-gray-600 dark:text-white cursor-pointer"
+               
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="icon icon-tabler icon-tabler-chevron-left"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <polyline points="15 6 9 12 15 18" />
+                </svg>
+                <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
+              </div>
+              <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Bag</p>
+              <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
+                <div className="md:w-4/12 2xl:w-1/4 w-full">
+                  <img
+                    src="https://i.ibb.co/SX762kX/Rectangle-36-1.png"
+                    alt="Black Leather Bag"
+                    className="h-full object-center object-cover md:block hidden"
+                  />
+                  <img
+                    src="https://i.ibb.co/g9xsdCM/Rectangle-37.png"
+                    alt="Black Leather Bag"
+                    className="md:hidden w-full h-full object-center object-cover"
+                  />
                 </div>
-
-                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                  <div className="flex justify-between text-base font-medium text-gray-900">
-                    <p>Subtotal</p>
-                    <p>$262.00</p>
-                  </div>
-                  <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                  <div className="mt-6">
-                    <a
-                      href="#"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
+                  <p className="text-xs leading-3 text-gray-800 dark:text-white md:pt-0 pt-4">RF293</p>
+                  <div className="flex items-center justify-between w-full pt-1">
+                    <p className="text-base font-black leading-none text-gray-800 dark:text-white">North wolf bag</p>
+                    <select
+                      aria-label="Select quantity"
+                      className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
                     >
-                      Checkout
-                    </a>
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                    </select>
                   </div>
-                  <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                    <p>
-                      or{' '}
-                      <button
-                        type="button"
-                        onClick={() => setOpen(false)}
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
-                      >
-                        Continue Shopping
-                        <span aria-hidden="true"> &rarr;</span>
-                      </button>
-                    </p>
+                  <p className="text-xs leading-3 text-gray-600 dark:text-white pt-2">Height: 10 inches</p>
+                  <p className="text-xs leading-3 text-gray-600 dark:text-white py-4">Color: Black</p>
+                  <p className="w-96 text-xs leading-3 text-gray-600 dark:text-white">Composition: 100% calf leather</p>
+                  <div className="flex items-center justify-between pt-5">
+                    <div className="flex items-center">
+                      <p className="text-xs leading-3 underline text-gray-800 dark:text-white cursor-pointer">
+                        Add to favorites
+                      </p>
+                      <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                    </div>
+                    <p className="text-base font-black leading-none text-gray-800 dark:text-white">,000</p>
                   </div>
                 </div>
               </div>
-            </DialogPanel>
+              <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
+                <div className="md:w-4/12 2xl:w-1/4 w-full">
+                  <img
+                    src="https://i.ibb.co/c6KyDXN/Rectangle-5-1.png"
+                    alt="Gray Sneakers"
+                    className="h-full object-center object-cover md:block hidden"
+                  />
+                  <img
+                    src="https://i.ibb.co/yVSpYqx/Rectangle-6.png"
+                    alt="Gray Sneakers"
+                    className="md:hidden w-full h-full object-center object-cover"
+                  />
+                </div>
+                <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
+                  <p className="text-xs leading-3 text-gray-800 dark:text-white md:pt-0 pt-4">RF293</p>
+                  <div className="flex items-center justify-between w-full pt-1">
+                    <p className="text-base font-black leading-none text-gray-800 dark:text-white">LW sneakers</p>
+                    <select
+                      aria-label="Select quantity"
+                      className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                    >
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                    </select>
+                  </div>
+                  <p className="text-xs leading-3 text-gray-600 dark:text-white pt-2">Height: 10 inches</p>
+                  <p className="text-xs leading-3 text-gray-600 dark:text-white py-4">Color: Black</p>
+                  <p className="w-96 text-xs leading-3 text-gray-600 dark:text-white">Composition: 100% calf leather</p>
+                  <div className="flex items-center justify-between pt-5">
+                    <div className="flex items-center">
+                      <p className="text-xs leading-3 underline text-gray-800 dark:text-white cursor-pointer">
+                        Add to favorites
+                      </p>
+                      <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                    </div>
+                    <p className="text-base font-black leading-none text-gray-800 dark:text-white">,000</p>
+                  </div>
+                </div>
+              </div>
+              <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
+                <div className="md:w-4/12 2xl:w-1/4 w-full">
+                  <img
+                    src="https://i.ibb.co/6gzWwSq/Rectangle-20-1.png"
+                    alt="Black Leather Purse"
+                    className="h-full object-center object-cover md:block hidden"
+                  />
+                  <img
+                    src="https://i.ibb.co/TTnzMTf/Rectangle-21.png"
+                    alt="Black Leather Purse"
+                    className="md:hidden w-full h-full object-center object-cover"
+                  />
+                </div>
+                <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
+                  <p className="text-xs leading-3 text-gray-800 dark:text-white md:pt-0 pt-4">RF293</p>
+                  <div className="flex items-center justify-between w-full">
+                    <p className="text-base font-black leading-none text-gray-800 dark:text-white">Luxe card holder</p>
+                    <select
+                      aria-label="Select quantity"
+                      className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
+                    >
+                      <option>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                    </select>
+                  </div>
+                  <p className="text-xs leading-3 text-gray-600 dark:text-white pt-2">Height: 10 inches</p>
+                  <p className="text-xs leading-3 text-gray-600 dark:text-white py-4">Color: Black</p>
+                  <p className="w-96 text-xs leading-3 text-gray-600 dark:text-white">Composition: 100% calf leather</p>
+                  <div className="flex items-center justify-between pt-5">
+                    <div className="flex items-center">
+                      <p className="text-xs leading-3 underline text-gray-800 dark:text-white cursor-pointer">
+                        Add to favorites
+                      </p>
+                      <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                    </div>
+                    <p className="text-base font-black leading-none text-gray-800 dark:text-white">,000</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-96 md:w-8/12 w-full bg-gray-100 dark:bg-gray-900 h-full">
+              <div className="flex flex-col lg:h-screen h-auto lg:px-8 md:px-7 px-4 lg:py-20 md:py-10 py-6 justify-between overflow-y-auto">
+                <div>
+                  <p className="lg:text-4xl text-3xl font-black leading-9 text-gray-800 dark:text-white">Summary</p>
+                  <div className="flex items-center justify-between pt-16">
+                    <p className="text-base leading-none text-gray-800 dark:text-white">Subtotal</p>
+                    <p className="text-base leading-none text-gray-800 dark:text-white">,000</p>
+                  </div>
+                  <div className="flex items-center justify-between pt-5">
+                    <p className="text-base leading-none text-gray-800 dark:text-white">Shipping</p>
+                    <p className="text-base leading-none text-gray-800 dark:text-white"></p>
+                  </div>
+                  <div className="flex items-center justify-between pt-5">
+                    <p className="text-base leading-none text-gray-800 dark:text-white">Tax</p>
+                    <p className="text-base leading-none text-gray-800 dark:text-white"></p>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
+                    <p className="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
+                    <p className="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">,240</p>
+                  </div>
+                  <button
+                    className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+                  >
+                    Checkout
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <style>
+          {`
+            /* width */
+            #scroll::-webkit-scrollbar {
+              width: 1px;
+            }
+
+            /* Track */
+            #scroll::-webkit-scrollbar-track {
+              background: #f1f1f1;
+            }
+
+            /* Handle */
+            #scroll::-webkit-scrollbar-thumb {
+              background: rgb(133, 132, 132);
+            }
+          `}
+        </style>
       </div>
-    </Dialog>
-  )
-}
+    </div>
+  );
+};
+
+export default ShoppingCard;
