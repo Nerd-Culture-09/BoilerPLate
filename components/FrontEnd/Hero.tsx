@@ -1,5 +1,7 @@
 'use client'
 
+import ProductLists from "./productlists"
+
 export default function Hero() {
 
   return (
