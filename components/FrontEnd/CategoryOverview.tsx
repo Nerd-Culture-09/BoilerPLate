@@ -30,9 +30,9 @@ const callouts = [
   {
     name: 'Accessories',
     description: 'Cutting-Edge Electronics, Everyday Deals',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
+    imageSrc: '/accwall.jpg',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
-    href: '#',
+    href: '/accessory-view',
   },
 ]
 
