@@ -25,6 +25,7 @@ type Card = {
   src: string;
   title: string;
   category: string;
+  price: string;
   content: React.ReactNode;
 };
 
@@ -32,7 +33,7 @@ export const CarouselContext = createContext<{
   onCardClose: (index: number) => void;
   currentIndex: number;
 }>({
-  onCardClose: () => {},
+  onCardClose: () => { },
   currentIndex: 0,
 });
 
@@ -90,64 +91,67 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     <CarouselContext.Provider
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
-      <div className="relative w-full">
-        <div
-          className="flex w-full overflow-x-scroll overscroll-x-auto py-10 md:py-20 scroll-smooth [scrollbar-width:none]"
-          ref={carouselRef}
-          onScroll={checkScrollability}
-        >
+      <div className="w-screen flex justify-center" style={{borderRadius: 50}}>
+        <div className="relative w-[1210px]" >
           <div
-            className={cn(
-              "absolute right-0  z-[1000] h-auto  w-[5%] overflow-hidden bg-gradient-to-l"
-            )}
-          ></div>
-
-          <div
-            className={cn(
-              "flex flex-row justify-start gap-4 pl-4",
-              "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
-            )}
+            className="flex w-full overflow-x-scroll overscroll-x-auto md:py-20 scroll-smooth [scrollbar-width:none]"
+            ref={carouselRef}
+            onScroll={checkScrollability}
           >
-            {items.map((item, index) => (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    duration: 0.5,
-                    delay: 0.2 * index,
-                    ease: "easeOut",
-                    once: true,
-                  },
-                }}
-                key={"card" + index}
-                className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
-              >
-                {item}
-              </motion.div>
-            ))}
+            <div
+              className={cn(
+                "absolute right-0  z-[1000] h-auto  w-[5%] overflow-hidden bg-gradient-to-l"
+              )}
+            ></div>
+
+            <div
+              className={cn(
+                "flex flex-row justify-start gap-4 pl-4",
+                "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
+              )}
+            >
+              {items.map((item, index) => (
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.5,
+                      delay: 0.2 * index,
+                      ease: "easeOut",
+                      once: true,
+                    },
+                  }}
+                  key={"card" + index}
+                  className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl"
+                >
+                  {item}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <div className="flex justify-end gap-2 mr-10">
+            <button
+              className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+              onClick={scrollLeft}
+              disabled={!canScrollLeft}
+            >
+              <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+            </button>
+            <button
+              className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+              onClick={scrollRight}
+              disabled={!canScrollRight}
+            >
+              <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+            </button>
           </div>
         </div>
-        <div className="flex justify-end gap-2 mr-10">
-          <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-            onClick={scrollLeft}
-            disabled={!canScrollLeft}
-          >
-            <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
-          </button>
-          <button
-            className="relative z-40 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
-            onClick={scrollRight}
-            disabled={!canScrollRight}
-          >
-            <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
-          </button>
-        </div>
+
       </div>
     </CarouselContext.Provider>
   );
@@ -214,7 +218,7 @@ export const Card = ({
               className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
             >
               <button
-                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
+                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-green-800 dark:bg-white rounded-full flex items-center justify-center"
                 onClick={handleClose}
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
@@ -231,6 +235,12 @@ export const Card = ({
               >
                 {card.title}
               </motion.p>
+              <button className="rounded-full pl-4 pr-1 py-1 flex items-center space-x-1 border border-green-950 text-black mt-4 text-xl font-bold dark:bg-zinc-800">
+                <span>Buy now </span>
+                <span className="bg-green-800 text-lg rounded-full text-[0.6rem] px-2 py-0 text-white">
+                  {card.price}
+                </span>
+              </button>
               <div className="py-10">{card.content}</div>
             </motion.div>
           </div>

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { Card, Carousel } from "../ui/apple-cards-carousel";
+import Overview from "./Quickview";
 
 export function Products() {
   const cards = data.map((card, index) => (
@@ -10,7 +11,7 @@ export function Products() {
 
   return (
     <div className="w-full h-full py-20">
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
+      <h2 className="max-w-7xl pl-8 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
         Nucleus Garments
       </h2>
       <Carousel items={cards} />
@@ -21,7 +22,7 @@ export function Products() {
 const DummyContent = () => {
   return (
     <>
-      {[...new Array(3).fill(1)].map((_, index) => {
+      {[...new Array(2).fill(1)].map((_, index) => {
         return (
           <div
             key={"dummy-content" + index}
@@ -52,40 +53,46 @@ const DummyContent = () => {
 
 const data = [
   {
-    category: "Artificial Intelligence",
-    title: "You can do more with AI.",
-    src: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=3556&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    category: "Hoodies",
+    title: "Black Nucleus Hoodie.",
+    price: "M300.00",
+    src: "/NucleusBlackHoodie.jpg",
+    content: <Overview />,
   },
   {
-    category: "Productivity",
-    title: "Enhance your productivity.",
-    src: "https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    category: "Hoodies",
+    title: "White Nucleus Hoodie.",
+    price: "M300",
+    src: "/NucleusBrownHoodie.png",
+    content: <Overview />,
   },
   {
-    category: "Product",
-    title: "Launching the new Apple Vision Pro.",
-    src: "https://images.unsplash.com/photo-1713869791518-a770879e60dc?q=80&w=2333&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    category: "T-Shirt",
+    title: "White Nucleus T-Shirt.",
+    price: "M300",
+    src: "/NucleusWhiteShirt.jpg",
+    content: <Overview />,
   },
 
   {
-    category: "Product",
-    title: "Maps for your iPhone 15 Pro Max.",
-    src: "https://images.unsplash.com/photo-1599202860130-f600f4948364?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    category: "T-Shirt",
+    title: "Brown Nucleus T-Shirt.",
+    price: "M300",
+    src: "/NucleusBrownShirtBlue.jpg",
+    content: <Overview />,
   },
   {
-    category: "iOS",
-    title: "Photography just got better.",
-    src: "https://images.unsplash.com/photo-1602081957921-9137a5d6eaee?q=80&w=2793&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    category: "Sweater",
+    title: "White Nucleus Sweater.",
+    price: "M300",
+    src: "/white.jpg",
+    content: <Overview />,
   },
   {
-    category: "Hiring",
-    title: "Hiring for a Staff Software Engineer",
-    src: "https://images.unsplash.com/photo-1511984804822-e16ba72f5848?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    content: <DummyContent />,
+    category: "Sweater",
+    title: "Peach Nucleus Sweater.",
+    price: "M300",
+    src: "/NucleusPeachHoodie.jpg",
+    content: <Overview />,
   },
 ];
