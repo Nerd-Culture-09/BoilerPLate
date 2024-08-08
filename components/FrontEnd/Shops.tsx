@@ -4,9 +4,9 @@ import { DirectionAwareHover } from "../ui/direction-aware-hover";
 import Footer from "./Footer"
 
 const Shops = () => {
-    const imageUrl = "/clothing.jpg";
-    const imageUrl2 = "/hoodie-img.jpg";
-    const imageUrl3 = "/tees-img.jpg";
+    const imageUrl = "/hoodie-img.jpg";
+    const imageUrl2 = "/tees-img.jpg";
+    const imageUrl3 = "/clothing.jpg";
   return (
       <div>
         <div className="px-72">
@@ -20,16 +20,18 @@ const Shops = () => {
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <Link href='/products'>
                 <DirectionAwareHover imageUrl={imageUrl}>
-                    <p className="font-bold text-xl">Nucleus Garments</p>
+                    <p className="font-bold text-xl">Nucleus Hoodies</p>
                     <p className="font-normal text-sm">Shop</p>
                 </DirectionAwareHover>
                 </Link>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
+                <Link href='/tee-products'>
                 <DirectionAwareHover imageUrl={imageUrl2}>
-                    <p className="font-bold text-xl">Nucleus Fashion</p>
+                    <p className="font-bold text-xl">Nucleus Tees</p>
                     <p className="font-normal text-sm">Shop</p>
                 </DirectionAwareHover>
+                </Link>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl3}>
