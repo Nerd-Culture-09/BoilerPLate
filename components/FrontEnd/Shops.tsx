@@ -6,7 +6,7 @@ import Footer from "./Footer"
 const Shops = () => {
     const imageUrl = "/hoodie-img.jpg";
     const imageUrl2 = "/tees-img.jpg";
-    const imageUrl3 = "/clothing.jpg";
+    const imageUrl3 = "/formal.jpg";
   return (
       <div>
         <div className="px-72">
@@ -34,10 +34,12 @@ const Shops = () => {
                 </Link>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
+                <Link href='/formal-wear'>
                 <DirectionAwareHover imageUrl={imageUrl3}>
-                    <p className="font-bold text-xl">Nucleus Apparel</p>
+                    <p className="font-bold text-xl">Nucleus Formal</p>
                     <p className="font-normal text-sm">Shop</p>
                 </DirectionAwareHover>
+                </Link>
             </div>
                 
             {/* <div>
