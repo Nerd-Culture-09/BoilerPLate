@@ -66,14 +66,14 @@ const data = [
     category: "Woman formal",
     title: "Woman suit.",
     price: "M2400.00",
-    src: "formal2.jpg",
+    src: "/formal2.jpg",
     content: <Overview selectedImage={"/formal2.jpg"} />,
   },
   {
     category: "Mans formal",
     title: "Mans suit.",
     price: "M7400.00",
-    src: "formal3.jpg",
+    src: "/formal3.jpg",
     content: <Overview selectedImage={"/formal3.jpg"} />,
   },
   

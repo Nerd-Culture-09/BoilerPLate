@@ -3,9 +3,9 @@ import Link from "next/link";
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
 import Footer from "./Footer"
 
-const AccessorytShops = () => {
+const AccessoryShops = () => {
     const imageUrl = "/camera.jpg";
-    const imageUrl2 = "/laptop.jpg";
+    const imageUrl2 = "/laptops.jpg";
     const imageUrl3 = "/phone store.jpg";
   return (
       <div>
@@ -19,71 +19,34 @@ const AccessorytShops = () => {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="h-[40rem] relative  flex items-center justify-center">
-                <DirectionAwareHover imageUrl={imageUrl}>
                 <Link href='/cam-items-view'>
+                <DirectionAwareHover imageUrl={imageUrl}>
                     <p className="font-bold text-xl">Nucleus CAMERA-STORE</p>
                     <p className="font-normal text-sm">Shop</p>
-                    </Link>
                 </DirectionAwareHover>
+                </Link>
                 
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
-                <DirectionAwareHover imageUrl={imageUrl2}>
                 <Link href='/computer-view'>
+                <DirectionAwareHover imageUrl={imageUrl2}>
                     <p className="font-bold text-xl">Nucleus Comp-solution</p>
                     <p className="font-normal text-sm">Shop</p>
-                </Link>
                 </DirectionAwareHover>
+                </Link>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
-                <DirectionAwareHover imageUrl={imageUrl3}>
                 <Link href='/phone-products-view'>
+                <DirectionAwareHover imageUrl={imageUrl3}>
                     <p className="font-bold text-xl">Nucleus PHONE-STORE</p>
                     <p className="font-normal text-sm">Shop</p>
-                    </Link>
                 </DirectionAwareHover>
+                    </Link>
             </div>
-                
-            {/* <div>
-                <img className="h-auto max-w-full rounded-lg" src="" alt="" />
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg" alt=""/>
-            </div>
-            <div>
-                <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt=""/>
-            </div> */}
         </div>
         </div>
         <Footer />
     </div>
   )
 }
-export default AccessorytShops;
+export default AccessoryShops;
