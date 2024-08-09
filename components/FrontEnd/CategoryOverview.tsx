@@ -30,7 +30,7 @@ const callouts = [
   {
     name: 'Accessories',
     description: 'Cutting-Edge Electronics, Everyday Deals',
-    imageSrc: '/accwall.jpg',
+    imageSrc: '/VMALL.jpg',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '/accessory-view',
   },
