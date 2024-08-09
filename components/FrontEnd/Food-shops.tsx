@@ -1,9 +1,10 @@
 'use client'
+import Link from "next/link";
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
 import Footer from "./Footer"
 
 const FoodShops = () => {
-    const imageUrl = "/fast-food.jpg";
+    const imageUrl = "/burger-home.jpg";
     const imageUrl2 = "/pizza.jpg";
     const imageUrl3 = "/soft-drinks.jpg";
   return (
@@ -19,20 +20,27 @@ const FoodShops = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl}>
+                <Link href='/food-burger-view'>
                     <p className="font-bold text-xl">Nucleus Burgers</p>
                     <p className="font-normal text-sm">Shop</p>
+                    </Link>
                 </DirectionAwareHover>
+                
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl2}>
+                <Link href='/food-pizza-view'>
                     <p className="font-bold text-xl">Nucleus Pizza</p>
                     <p className="font-normal text-sm">Shop</p>
+                </Link>
                 </DirectionAwareHover>
             </div>
             <div className="h-[40rem] relative  flex items-center justify-center">
                 <DirectionAwareHover imageUrl={imageUrl3}>
+                <Link href='/food-bev-view'>
                     <p className="font-bold text-xl">Nucleus Beverages</p>
                     <p className="font-normal text-sm">Shop</p>
+                    </Link>
                 </DirectionAwareHover>
             </div>
                 
