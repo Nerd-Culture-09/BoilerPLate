@@ -5,6 +5,7 @@ import CategoryOverview from "./CategoryOverview"
 import Partners from "./Partners"
 import Productlist from "./productlists"
 
+// Hero => Main
 export default function Main() {
   return (
     <div className="">

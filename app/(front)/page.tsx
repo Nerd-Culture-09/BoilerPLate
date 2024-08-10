@@ -6,6 +6,7 @@ import React from 'react'
 export default function page() {
   return (
     <div>
+      {/* Hero => Main */}
       <Main />
       <Footer />
     </div>
