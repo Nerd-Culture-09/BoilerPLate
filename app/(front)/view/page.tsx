@@ -2,9 +2,8 @@ import Shops from '@/components/FrontEnd/Shops'
 import React from 'react'
 
 export default function page() {
+  // View page should a dynamic route, Should use URL options For enhanced SEO options
   return (
-    <div className='md-bg-black'>
-        <Shops />
-            </div>
+    <Shops />
   )
 }
