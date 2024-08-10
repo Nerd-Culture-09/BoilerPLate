@@ -6,7 +6,6 @@ import Partners from "./Partners"
 import Productlist from "./productlists"
 
 export default function Hero() {
-
   return (
     <div className="">
       <div className="relative isolate px-6 pt-14 lg:px-8">
