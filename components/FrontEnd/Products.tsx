@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useState } from "react";
 import { Card, Carousel } from "../ui/apple-cards-carousel";
 import Overview from "./Quickview";
@@ -20,7 +19,6 @@ export function Products() {
         Nucleus Hoodies And Sweaters
       </h2>
       <Carousel items={cards} />
-      
     </div>
   );
 }

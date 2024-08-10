@@ -8,7 +8,7 @@ const Shops = () => {
     const imageUrl2 = "/tees-img.jpg";
     const imageUrl3 = "/formal.jpg";
   return (
-      <div>
+      <div className="py-5">
         <div className="lg:px-72">
             <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
                 <button type="button" className="text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800">All categories</button>
@@ -18,7 +18,7 @@ const Shops = () => {
             </div>
             {/* this is view overlap on small displays */}
             <div className="grid grid-cols-2 md:grid-cols-3 md:gap-0 lg:gap-16">
-                <div className="h-[40rem] relative  flex items-center justify-center">
+                <div className="relative  flex items-center justify-center">
                     <Link href='/products'>
                     <DirectionAwareHover imageUrl={imageUrl}>
                         <p className="font-bold text-xl">Nucleus Hoodies</p>
@@ -26,7 +26,7 @@ const Shops = () => {
                     </DirectionAwareHover>
                     </Link>
                 </div>
-                <div className="h-[40rem] relative  flex items-center justify-center">
+                <div className="relative  flex items-center justify-center">
                     <Link href='/tee-products'>
                     <DirectionAwareHover imageUrl={imageUrl2}>
                         <p className="font-bold text-xl">Nucleus Tees</p>
@@ -34,7 +34,7 @@ const Shops = () => {
                     </DirectionAwareHover>
                     </Link>
                 </div>
-                <div className="h-[40rem] relative  flex items-center justify-center">
+                <div className="relative  flex items-center justify-center">
                     <Link href='/formal-wear-view'>
                     <DirectionAwareHover imageUrl={imageUrl3}>
                         <p className="font-bold text-xl">Nucleus Formal</p>
@@ -44,6 +44,7 @@ const Shops = () => {
                 </div>
             </div>
         </div>
+        {/* Footer should be on the main the Layout */}
         <Footer />
     </div>
   )
