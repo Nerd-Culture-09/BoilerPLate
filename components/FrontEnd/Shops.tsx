@@ -45,7 +45,6 @@ const Shops = () => {
             </div>
         </div>
         {/* Footer should be on the main the Layout */}
-        <Footer />
     </div>
   )
 }
