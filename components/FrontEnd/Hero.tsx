@@ -11,7 +11,8 @@ export default function Hero() {
     <div className="">
       <div className="relative isolate px-6 pt-14 lg:px-8">
       <div className="w-full">
-        <div className="px-72">
+        {/* Carousel must function well in every devices */}
+        <div className="lg:px-72">
           <Carousel />
         </div>
       <CategoryOverview />
