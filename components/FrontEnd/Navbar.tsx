@@ -8,6 +8,7 @@ import {
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
+import { UserDropdown } from './UserDropdown'
 
 const navigation = {
   categories: [
@@ -149,7 +150,9 @@ export default function Navbar() {
               />
               <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
               <span className="sr-only">items in cart, view bag</span>
+              <UserDropdown/>
             </a>
+            
           </div>
         </div>
       </div>

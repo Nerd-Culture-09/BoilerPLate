@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const ShoppingCard: React.FC = () => {
@@ -37,15 +38,15 @@ const ShoppingCard: React.FC = () => {
                 </svg>
                 <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
               </div>
-              <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Bag</p>
+              <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Hoodie</p>
               <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                 <div className="md:w-4/12 2xl:w-1/4 w-full">
-                  <img
-                    src="https://i.ibb.co/SX762kX/Rectangle-36-1.png"
+                  <Image
+                    src="/NucleusBlackHoodie.jpg"
                     alt="Black Leather Bag"
                     className="h-full object-center object-cover md:block hidden"
                   />
-                  <img
+                  <Image
                     src="https://i.ibb.co/g9xsdCM/Rectangle-37.png"
                     alt="Black Leather Bag"
                     className="md:hidden w-full h-full object-center object-cover"
@@ -80,12 +81,12 @@ const ShoppingCard: React.FC = () => {
               </div>
               <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                 <div className="md:w-4/12 2xl:w-1/4 w-full">
-                  <img
+                  <Image
                     src="https://i.ibb.co/c6KyDXN/Rectangle-5-1.png"
                     alt="Gray Sneakers"
                     className="h-full object-center object-cover md:block hidden"
                   />
-                  <img
+                  <Image
                     src="https://i.ibb.co/yVSpYqx/Rectangle-6.png"
                     alt="Gray Sneakers"
                     className="md:hidden w-full h-full object-center object-cover"
@@ -120,12 +121,12 @@ const ShoppingCard: React.FC = () => {
               </div>
               <div className="md:flex items-strech py-8 md:py-10 lg:py-8 border-t border-gray-50">
                 <div className="md:w-4/12 2xl:w-1/4 w-full">
-                  <img
+                  <Image
                     src="https://i.ibb.co/6gzWwSq/Rectangle-20-1.png"
                     alt="Black Leather Purse"
                     className="h-full object-center object-cover md:block hidden"
                   />
-                  <img
+                  <Image
                     src="https://i.ibb.co/TTnzMTf/Rectangle-21.png"
                     alt="Black Leather Purse"
                     className="md:hidden w-full h-full object-center object-cover"
@@ -178,7 +179,7 @@ const ShoppingCard: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
-                    <p className="text-2xl leading-normal text-gray-800 dark:text-white">Total</p>
+                    <p className="text-2xl leading-normal text-gray-800 dark:text-white pt-1 flex items-center">Total</p>
                     <p className="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">,240</p>
                   </div>
                   <button
