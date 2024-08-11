@@ -1,9 +1,19 @@
-import Shops from '@/components/FrontEnd/Shops'
-import React from 'react'
+'use client';
+import Shops from '@/components/FrontEnd/Shops';
+import { useSearchParams } from 'next/navigation'; 
+import React from 'react';
 
-export default function page() {
-  // View page should a dynamic route, Should use URL options For enhanced SEO options
+const ShopPage = () => {
+  const searchParams = useSearchParams();
+  // Retrieve 'category' from query parameters
+  const category = searchParams.get('category'); 
+  // You can use `category` to fetch data or conditionally render content
+
   return (
-    <Shops />
-  )
+    <div>
+      <Shops />
+    </div>
+  );
 }
+
+export default ShopPage;
