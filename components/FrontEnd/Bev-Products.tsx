@@ -30,22 +30,22 @@ const data = [
     category: "Beverages",
     title: "Coke Can",
     price: "M20.00",
-    src: "/coke.jpg",
-    content: <Overview selectedImage={"/coke.jpg"} />,
+    src: "/coke1.jpg",
+    content: <Overview selectedImage={"/coke1.jpg"} />,
   },
   {
     category: "Beverages",
     title: "Nucleus Water ",
     price: "M40.00",
-    src: "/water-bottle.jpg",
-    content: <Overview selectedImage={"/water-bottle.jpg"} />,
+    src: "/water1.jpg",
+    content: <Overview selectedImage={"/water1.jpg"} />,
   },
   {
     category: "Beverages",
     title: "Blue Cocktail ",
     price: "M50.00",
-    src: "/King-of-Blue-Cocktail.jpg",
-    content: <Overview selectedImage={"/King-of-Blue-Cocktail.jpg"} />,
+    src: "/Cocktail1.jpg",
+    content: <Overview selectedImage={"/Cocktail1.jpg"} />,
   },
 
 ];
