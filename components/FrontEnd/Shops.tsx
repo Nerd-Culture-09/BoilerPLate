@@ -38,14 +38,6 @@ const Shops = () => {
                             </DirectionAwareHover>
                         </Link>
                     </div>
-                    <div className="relative flex items-center justify-center">
-                        <Link href='/formal-wear-view'>
-                            <DirectionAwareHover imageUrl={imageUrl3}>
-                                <p className="font-bold text-xl">Nucleus Formal</p>
-                                <p className="font-normal text-sm">Shop</p>
-                            </DirectionAwareHover>
-                        </Link>
-                    </div>
                 </div>
             </div>
             {/* Footer should be in the main Layout */}

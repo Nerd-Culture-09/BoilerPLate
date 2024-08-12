@@ -4,9 +4,10 @@ import { BackgroundGradientDemo } from "./Card";
 
 interface OverviewProps {
   selectedImage: string;
+  description: string;
 }
 
-const Overview: React.FC<OverviewProps> = ({ selectedImage }) => {
+const Overview: React.FC<OverviewProps> = ({ selectedImage, description }) => {
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="pb-5 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-5">
@@ -16,8 +17,7 @@ const Overview: React.FC<OverviewProps> = ({ selectedImage }) => {
               Summer styles are finally here
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-              This year, our new summer collection will shelter you from the
-              harsh elements of a world that doesn't care if you live or die.
+              {description}
             </p>
           </div>
           <div>

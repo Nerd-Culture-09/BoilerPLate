@@ -31,21 +31,21 @@ const data = [
     title: "camera",
     price: "M2000.00",
     src: "/camera1.jpg",
-    content: <Overview selectedImage={"/camera1.jpg"} />,
+    content: <Overview selectedImage={"/camera1.jpg"} description={"Stylish Cam With Cutting Edge Technology"} />,
   },
   {
     category: "Cameras",
     title: "Hamon camera",
     price: "M4250.00",
     src: "/camera2.jpg",
-    content: <Overview selectedImage={"/camera2.jpg"} />,
+    content: <Overview selectedImage={"/camera2.jpg"} description={""} />,
   },
   {
     category: "Cameras",
     title: "cinema camera ",
     price: "M5000.00",
     src: "/camera3.jpg",
-    content: <Overview selectedImage={"/camera3.jpg"} />,
+    content: <Overview selectedImage={"/camera3.jpg"} description={""} />,
   },
 
 ];
