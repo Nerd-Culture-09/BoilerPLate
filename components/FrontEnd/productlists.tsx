@@ -1,54 +1,45 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
+import Overview from "./Quickview";
+import Image from 'next/image';
+
 const products = [
   {
     id: 1,
-    name: 'Basic Tee',
+    name: 'Nucleus Hoodie',
     href: '/overview',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '/NucleusBlackHoodie.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: 'M700.00',
+    color: 'Black',
+    
+  },
+  {
+    id: 2,
+    name: 'Nucleus T-Shirt',
+    href: '/overview',
+    imageSrc: '/BlackShirt-NucleusDevs.jpg',
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 'M150.00',
     color: 'Black',
   },
   {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    id: 3,
+    name: 'Car Aromatherapy Diffuser ',
+    href: '/overview',
+    imageSrc: '/nucleusAsse.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: 'M350.00',
     color: 'Black',
   },
   {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    id: 4,
+    name: 'Wireless Headphones ',
+    href: '/overview',
+    imageSrc: '/Accesso.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
+    price: 'M500.00',
+    color: 'Black&Purple',
   },
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
-    color: 'Black',
-  },
+ 
   // More products...
 ]
 
@@ -56,15 +47,17 @@ export default function Productlist() {
   return (
     <div className="">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Newly Released </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product.id} className="group relative">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                <img
+                <Image
                   alt={product.imageAlt}
                   src={product.imageSrc}
+                  width={400}
+                  height={400}
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
