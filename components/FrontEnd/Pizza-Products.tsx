@@ -31,21 +31,21 @@ const data = [
     title: "Pepperoni Pizza",
     price: "M30.00",
     src: "/pepperoni-pizza.jpg",
-    content: <Overview selectedImage={"/pepperoni-pizza.jpg"} />,
+    content: <Overview selectedImage={"/pepperoni-pizza.jpg"} description={"Pepperoni Pizza"} />,
   },
   {
     category: "Pizzas",
     title: "Cheesy Cheese ",
     price: "M40.00",
     src: "/pizza-cheese.jpg",
-    content: <Overview selectedImage={"/pizza-cheese.jpg"} />,
+    content: <Overview selectedImage={"/pizza-cheese.jpg"} description={""} />,
   },
   {
     category: "Pizzas",
     title: "Vegan ",
     price: "M50.00",
     src: "/veggie-pizza.jpg",
-    content: <Overview selectedImage={"/veggie-pizza.jpg"} />,
+    content: <Overview selectedImage={"/veggie-pizza.jpg"} description={""} />,
   },
 
 ];
