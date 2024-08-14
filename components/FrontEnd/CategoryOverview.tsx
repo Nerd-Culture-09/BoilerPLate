@@ -16,14 +16,14 @@ const callouts = [
   {
     name: 'Clothing',
     description: 'Elevate Your Everyday Wardrobe',
-    imageSrc: '/hoodie-img.jpg',
+    imageSrc: '/clothes1.jpg',
     imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
     href: '/view',
   },
   {
     name: 'Food',
     description: 'Gourmet Goodness, Right at Home',
-    imageSrc: '/grocery-food.jpg',
+    imageSrc: '/food2.jpg',
     imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
     href: '/food-shop-view',
   },

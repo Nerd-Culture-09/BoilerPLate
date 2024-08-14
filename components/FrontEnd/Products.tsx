@@ -67,3 +67,37 @@ export function Products() {
     </div>
   );
 }
+<<<<<<< HEAD
+=======
+
+const data = [
+  {
+    category: "Hoodies",
+    title: "Black Nucleus Hoodie.",
+    price: "M300.00",
+    src: "/NucleusBlackHoodie.jpg",
+    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} description={"Black Nucleus Hoodie."} />,
+  },
+  {
+    category: "Hoodies",
+    title: "Greige Nucleus Hoodie.",
+    price: "M300",
+    src: "/NucleusBrownHoodie.png",
+    content: <Overview selectedImage={"/NucleusBrownHoodie.png"} description={"Greige Nucleus Hoodie"} />,
+  },
+  {
+    category: "Sweater",
+    title: "White Nucleus Sweater.",
+    price: "M300",
+    src: "/white.jpg",
+    content: <Overview selectedImage={"/white.jpg"} description={"White Nucleus Hoodie"} />,
+  },
+  {
+    category: "Sweater",
+    title: "Peach Nucleus Sweater.",
+    price: "M300",
+    src: "/NucleusPeachHoodie.jpg",
+    content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} description={"Peach Nucleus Hoodie"} />,
+  },
+];
+>>>>>>> 968f0ce6d3cd8a9a5562109860de2dfc8fe23f00
