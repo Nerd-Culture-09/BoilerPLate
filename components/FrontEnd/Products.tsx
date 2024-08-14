@@ -25,10 +25,13 @@ export function Products() {
   // State to keep track of the selected image source
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
-
+  const [loading, setLoading] = useState<boolean>();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
   // Fetch products from the API
   useEffect(() => {
     async function fetchProducts() {
+      setLoading(true)
       try {
         const response = await axios.get<Product[]>("https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce");
         setProducts(response.data);
@@ -41,6 +44,9 @@ export function Products() {
     fetchProducts();
   }, []);
 
+
+
+
   const cards = products.map((product, index) => (
     <div key={product._id} onClick={() => setSelectedImage(product.image_one)}>
       <Card
@@ -51,7 +57,6 @@ export function Products() {
           price: `M${product.price}`,
           src: product.image_one,
           content: <p>test</p>,
-          // content: <Overview selectedImage={product.image_one} />,
         }}
         index={index}
       />
@@ -67,37 +72,3 @@ export function Products() {
     </div>
   );
 }
-<<<<<<< HEAD
-=======
-
-const data = [
-  {
-    category: "Hoodies",
-    title: "Black Nucleus Hoodie.",
-    price: "M300.00",
-    src: "/NucleusBlackHoodie.jpg",
-    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} description={"Black Nucleus Hoodie."} />,
-  },
-  {
-    category: "Hoodies",
-    title: "Greige Nucleus Hoodie.",
-    price: "M300",
-    src: "/NucleusBrownHoodie.png",
-    content: <Overview selectedImage={"/NucleusBrownHoodie.png"} description={"Greige Nucleus Hoodie"} />,
-  },
-  {
-    category: "Sweater",
-    title: "White Nucleus Sweater.",
-    price: "M300",
-    src: "/white.jpg",
-    content: <Overview selectedImage={"/white.jpg"} description={"White Nucleus Hoodie"} />,
-  },
-  {
-    category: "Sweater",
-    title: "Peach Nucleus Sweater.",
-    price: "M300",
-    src: "/NucleusPeachHoodie.jpg",
-    content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} description={"Peach Nucleus Hoodie"} />,
-  },
-];
->>>>>>> 968f0ce6d3cd8a9a5562109860de2dfc8fe23f00
