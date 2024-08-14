@@ -4,6 +4,7 @@ import Carousel from "./Carousel"
 import CategoryOverview from "./CategoryOverview"
 import Partners from "./Partners"
 import Productlist from "./productlists"
+import ProductListView from "./ProductListVew"
 
 // Hero => Main
 export default function Main() {
@@ -16,7 +17,7 @@ export default function Main() {
           <Carousel />
         </div>
       <CategoryOverview />
-      <Productlist />
+      <ProductListView />
       <Partners />
       </div>
         <div
