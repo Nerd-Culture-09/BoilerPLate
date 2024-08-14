@@ -46,6 +46,7 @@ const data = [
     price: "M50.00",
     src: "/King-of-Blue-Cocktail.jpg",
     content: <Overview selectedImage={"/King-of-Blue-Cocktail.jpg"} description={""} />,
+
   },
 
 ];
