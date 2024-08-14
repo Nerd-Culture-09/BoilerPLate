@@ -1,71 +1,49 @@
-import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from 'next';
 
-type Params = {
-  id: string;
-};
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-type Product = {
-  id: string;
+interface Product {
+  _id: string;
   name: string;
   description: string;
   quantity: number;
   price: number;
   size: string;
   category: string;
-  subcategory: string
+  subcategory: string;
   status: string;
   color: string;
   thumbnail: string;
   image_one: string;
   image_two: string;
   image_three: string;
-  _v: number;
+}
 
-  // Add other fields as necessary
-};
+const Products = () => {
+  const [products, setProducts] = useState<Product[]>([]);
 
-type ProductsProps = {
-  product: Product;
-};
-
-export const getStaticProps: GetStaticProps<ProductsProps> = async (context: GetStaticPropsContext<Params>) => {
-  const { id } = context.params!;
-
-  // Fetch data based on the id
-  const product = await fetch(`https://https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce/products/${id}`).then(res => res.json());
-
-  if (!product) {
-    return {
-      notFound: true,
-    };
+  async function fetchProducts() {
+    try {
+      const response = await axios.get<Product[]>('https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce/');
+      setProducts(response.data);
+    } catch (error) {
+      console.error('Failed to fetch products:', error);
+    }
   }
 
-  return {
-    props: {
-      product,
-    },
-  };
-};
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const products = await fetch('https://https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce/products').then(res => res.json());
-
-  const paths = products.map((product: Product) => ({
-    params: { id: product.id },
-  }));
-
-  return {
-    paths,
-    fallback: false, 
-  };
-};
-
-const Products = ({ product }: ProductsProps) => {
   return (
     <div>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <p>Price: M{product.price}</p>
+      {products.map((product) => (
+        <div key={product._id}>
+          <h1>{product.name}</h1>
+          <p>{product.description}</p>
+          <p>Price: M{product.price}</p>
+        </div>
+      ))}
     </div>
   );
 };

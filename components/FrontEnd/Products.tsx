@@ -1,15 +1,60 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Card, Carousel } from "../ui/apple-cards-carousel";
 import Overview from "./Quickview";
 
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
+  size: string;
+  category: string;
+  subcategory: string;
+  status: string;
+  color: string;
+  thumbnail: string;
+  image_one: string;
+  image_two: string;
+  image_three: string;
+}
+
 export function Products() {
   // State to keep track of the selected image source
-  const [selectedImage, setSelectedImage] = useState<string>(data[0].src);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
 
-  const cards = data.map((card, index) => (
-    <div key={index} onClick={() => setSelectedImage(data[index].src)}>
-      <Card key={card.src} card={card} index={index} />
+  // Fetch products from the API
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await axios.get<Product[]>("https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce");
+        setProducts(response.data);
+        setSelectedImage(response.data[0]?.image_one || null);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
+  const cards = products.map((product, index) => (
+    <div key={product._id} onClick={() => setSelectedImage(product.image_one)}>
+      <Card
+        key={product._id}
+        card={{
+          category: product.category,
+          title: product.name,
+          price: `M${product.price}`,
+          src: product.image_one,
+          content: <p>test</p>,
+          // content: <Overview selectedImage={product.image_one} />,
+        }}
+        index={index}
+      />
     </div>
   ));
 
@@ -22,34 +67,3 @@ export function Products() {
     </div>
   );
 }
-
-const data = [
-  {
-    category: "Hoodies",
-    title: "Black Nucleus Hoodie.",
-    price: "M300.00",
-    src: "/NucleusBlackHoodie.jpg",
-    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} />,
-  },
-  {
-    category: "Hoodies",
-    title: "Greige Nucleus Hoodie.",
-    price: "M300",
-    src: "/NucleusBrownHoodie.png",
-    content: <Overview selectedImage={"/NucleusBrownHoodie.png"} />,
-  },
-  {
-    category: "Sweater",
-    title: "White Nucleus Sweater.",
-    price: "M300",
-    src: "/white.jpg",
-    content: <Overview selectedImage={"/white.jpg"} />,
-  },
-  {
-    category: "Sweater",
-    title: "Peach Nucleus Sweater.",
-    price: "M300",
-    src: "/NucleusPeachHoodie.jpg",
-    content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} />,
-  },
-];
