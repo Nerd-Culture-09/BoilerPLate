@@ -1,22 +1,34 @@
+import { useState } from 'react';
 import Overview from "./Quickview";
 import Image from 'next/image';
+import Modal from './ProductListModal';
+//import Modal from './Modal'; // Import the Modal component
 
-const products = [
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  price: string;
+  color: string;
+  href?: string;
+}
+
+const initialProducts: Product[] = [
   {
     id: 1,
     name: 'Nucleus Hoodie',
-    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} description={"Hoodie"}/>,
-    //href: '/overview',
+    description: 'Hoodie',
     imageSrc: '/NucleusBlackHoodie.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: 'M700.00',
     color: 'Black',
-    
   },
   {
     id: 2,
     name: 'Nucleus T-Shirt',
-    href: '/overview',
+    description: 'T-Shirt',
     imageSrc: '/BlackShirt-NucleusDevs.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: 'M150.00',
@@ -24,8 +36,8 @@ const products = [
   },
   {
     id: 3,
-    name: 'Car Aromatherapy Diffuser ',
-    href: '/overview',
+    name: 'Car Aromatherapy Diffuser',
+    description: 'Diffuser',
     imageSrc: '/nucleusAsse.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: 'M350.00',
@@ -33,26 +45,39 @@ const products = [
   },
   {
     id: 4,
-    name: 'Wireless Headphones ',
-    href: '/overview',
+    name: 'Wireless Headphones',
+    description: 'Headphones',
     imageSrc: '/Accesso.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: 'M500.00',
-    color: 'Black&Purple',
+    color: 'Black & Purple',
   },
- 
-  // More products...
-]
+  // Add more products as needed...
+];
 
 export default function Productlist() {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+  };
+
   return (
     <div className="">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Newly Released </h2>
+        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Newly Released</h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <div key={product.id} className="group relative">
+          {initialProducts.map((product) => (
+            <div
+              key={product.id}
+              className="group relative cursor-pointer"
+              onClick={() => handleProductClick(product)}
+            >
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <Image
                   alt={product.imageAlt}
@@ -78,6 +103,15 @@ export default function Productlist() {
           ))}
         </div>
       </div>
+
+      <Modal isOpen={!!selectedProduct} onClose={closeModal}>
+        {selectedProduct && (
+          <Overview
+            selectedImage={selectedProduct.imageSrc}
+            description={selectedProduct.description}
+          />
+        )}
+      </Modal>
     </div>
-  )
+  );
 }

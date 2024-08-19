@@ -29,27 +29,43 @@ const data = [
     title: "Black Nucleus Hoodie.",
     price: "M300.00",
     src: "/NucleusBlackHoodie.jpg",
+<<<<<<< HEAD
     content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} description="" />,
+=======
+    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} description={"Black Nucleus Hoodie."} />,
+>>>>>>> 968f0ce6d3cd8a9a5562109860de2dfc8fe23f00
   },
   {
     category: "Hoodies",
     title: "Greige Nucleus Hoodie.",
     price: "M300",
     src: "/NucleusBrownHoodie.png",
+<<<<<<< HEAD
     content: <Overview selectedImage={"/NucleusBrownHoodie.png"} description="" />,
+=======
+    content: <Overview selectedImage={"/NucleusBrownHoodie.png"} description={"Greige Nucleus Hoodie"} />,
+>>>>>>> 968f0ce6d3cd8a9a5562109860de2dfc8fe23f00
   },
   {
     category: "Sweater",
     title: "White Nucleus Sweater.",
     price: "M300",
     src: "/white.jpg",
+<<<<<<< HEAD
     content: <Overview selectedImage={"/white.jpg"} description="" />,
+=======
+    content: <Overview selectedImage={"/white.jpg"} description={"White Nucleus Hoodie"} />,
+>>>>>>> 968f0ce6d3cd8a9a5562109860de2dfc8fe23f00
   },
   {
     category: "Sweater",
     title: "Peach Nucleus Sweater.",
     price: "M300",
     src: "/NucleusPeachHoodie.jpg",
+<<<<<<< HEAD
     content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} description="" />,
+=======
+    content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} description={"Peach Nucleus Hoodie"} />,
+>>>>>>> 968f0ce6d3cd8a9a5562109860de2dfc8fe23f00
   },
 ];
