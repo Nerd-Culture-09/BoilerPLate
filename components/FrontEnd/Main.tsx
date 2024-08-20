@@ -3,6 +3,7 @@
 import Carousel from "./Carousel"
 import CategoryOverview from "./CategoryOverview"
 import Partners from "./Partners"
+import Feacture from "./Feacture"
 import Productlist from "./productlists"
 import ProductListView from "./ProductListVew"
 
@@ -17,6 +18,7 @@ export default function Main() {
           <Carousel />
         </div>
       <CategoryOverview />
+      <Feacture/>
       <ProductListView />
       <Partners />
       </div>

@@ -9,6 +9,9 @@ import {
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { UserDropdown } from './UserDropdown'
+import { Stores } from '@/components/FrontEnd/Stores'
+import Link from 'next/link'
+
 
 const navigation = {
   categories: [
@@ -51,7 +54,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Stores', href: '#' },
+    { name: 'Stores', href: '/Stores' }, // Link to the Stores page
   ],
 }
 
@@ -76,14 +79,14 @@ export default function Navbar() {
         </button>
         {/* Logo */}
         <div className="ml-4 flex lg:ml-0">
-          <a href="/">
+          <Link href="/">
             <span className="sr-only">V-Mol</span>
             <img
               alt=""
               src="/logo.png"
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
         </div>
         {/* Flyout menus */}
         <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
