@@ -11,6 +11,7 @@ import { useState } from 'react'
 import { UserDropdown } from './UserDropdown'
 import { Stores } from '@/components/FrontEnd/Stores'
 import Link from 'next/link'
+import useCart from '@/app/(front)/store'
 
 
 const navigation = {
@@ -63,6 +64,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const cart = useCart();
   const [open, setOpen] = useState(false)
   return (
     <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -151,7 +153,7 @@ export default function Navbar() {
                 aria-hidden="true"
                 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
               />
-              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cart.items.length}</span>
               <span className="sr-only">items in cart, view bag</span>
               <UserDropdown/>
             </a>
