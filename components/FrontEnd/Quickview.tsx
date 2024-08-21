@@ -1,13 +1,26 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import Link from "next/link";
 import { BackgroundGradientDemo } from "./Card";
+import { Button } from "../ui/button";
+import useCart from "@/app/(front)/store";
+import { Product } from "@/app/(front)/types";
 
 interface OverviewProps {
   selectedImage: string;
   description: string;
+  data: Product;
 }
 
-const Overview: React.FC<OverviewProps> = ({ selectedImage, description }) => {
+
+const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data}) => {
+
+  const cart = useCart();
+
+  const addToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(data);
+  }
+
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="pb-5 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-5">
@@ -38,9 +51,13 @@ const Overview: React.FC<OverviewProps> = ({ selectedImage, description }) => {
 
               <Link
                 href="/cart"
-                className="inline-block rounded-md border border-transparent bg-green-800 px-8 py-3 text-center font-medium text-white hover:bg-black"
+                
               >
-                Add To Cart
+                <Button 
+                onClick={addToCart}
+                className="inline-block rounded-md border border-transparent bg-green-800 text-center font-medium text-white hover:bg-black">
+                 Add to Cart   
+                </Button>
               </Link>
             </div>
           </div>
