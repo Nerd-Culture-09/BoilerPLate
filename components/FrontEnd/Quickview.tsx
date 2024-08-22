@@ -42,7 +42,7 @@ const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data}) 
               >
                 <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                   <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8 rounded-md">
                       <BackgroundGradientDemo src={selectedImage} />
                     </div>
                   </div>

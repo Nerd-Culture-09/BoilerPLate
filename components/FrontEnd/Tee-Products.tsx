@@ -21,6 +21,7 @@ export function TeeProducts() {
     try {
       const response = await axios.get<Product[]>('https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce/');
       setProducts(response.data);
+      
     } catch (error) {
       console.error('Failed to fetch products:', error);
     }

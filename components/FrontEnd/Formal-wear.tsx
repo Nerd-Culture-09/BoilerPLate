@@ -37,7 +37,7 @@ export function FormalProducts() {
     title: product.name,  // Assuming `title` is a property of `Product`
     price: product.price.toString(),  // Convert price to string
     src: product.thumbnail,  // Assuming `image` is a property of `Product`
-    content: <Overview description={product.description} selectedImage={product.thumbnail} />,  // Adjust as needed
+    content: <Overview description={product.description} selectedImage={product.thumbnail} data={undefined} />,  // Adjust as needed
   }));
 
   const cards = data.map((card, index) => (
