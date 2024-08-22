@@ -117,7 +117,7 @@ const ShoppingCard: React.FC = () => {
                       height={100}
                       src={image.defaultImage}
                       alt="Product Image"
-                      className="h-full object-center object-cover md:block hidden"
+                      className="h-full object-center object-cover md:block hidden "
                     />
                     <Image
                       width={100}
