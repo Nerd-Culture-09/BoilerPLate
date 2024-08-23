@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 interface ProductImage {
   defaultImage: string;
   hoverImage: string;
+  sideImage: string;
+  backImage: string;
   price: number;
   name: string;
 }
@@ -29,7 +31,7 @@ const ShoppingCard: React.FC = () => {
       try {
         const response = await axios.get("http://192.168.1.22:8000/nu-commerce", {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`,
+            "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`,
           },
         });
         setProductImages(response.data);
@@ -66,7 +68,6 @@ const ShoppingCard: React.FC = () => {
   };
 
   const handleCheckout = () => {
-    // Implement checkout logic here
     alert("Proceeding to checkout");
   };
 
@@ -119,15 +120,22 @@ const ShoppingCard: React.FC = () => {
                       width={100}
                       height={100}
                       src={image.defaultImage}
-                      alt="Product Image"
-                      className="h-full object-center object-cover md:block hidden "
+                      alt="Product Front Image"
+                      className="h-full object-center object-cover md:block hidden"
                     />
                     <Image
                       width={100}
                       height={100}
-                      src={image.hoverImage}
-                      alt="Product Hover Image"
+                      src={image.backImage}
+                      alt="Product Back Image"
                       className="md:hidden w-full h-full object-center object-cover"
+                    />
+                    <Image
+                      width={100}
+                      height={100}
+                      src={image.sideImage}
+                      alt="Product Side Image"
+                      className="h-full object-center object-cover"
                     />
                   </div>
                   <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
