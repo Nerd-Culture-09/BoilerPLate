@@ -1,5 +1,4 @@
 import React, { MouseEventHandler } from "react";
-import Link from "next/link";
 import { BackgroundGradientDemo } from "./Card";
 import { Button } from "../ui/button";
 import useCart from "@/app/(front)/store";
@@ -8,7 +7,7 @@ import { Product } from "@/app/(front)/types";
 interface OverviewProps {
   selectedImage: string;
   description: string;
-  data: Product;
+  data: Product | undefined;
 }
 
 
@@ -18,7 +17,7 @@ const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data}) 
 
   const addToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    cart.addItem(data);
+    cart.addItem(data as any);
   }
 
   return (
@@ -48,17 +47,11 @@ const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data}) 
                   </div>
                 </div>
               </div>
-
-              <Link
-                href="/cart"
-                
-              >
                 <Button 
                 onClick={addToCart}
                 className="inline-block rounded-md border border-transparent bg-green-800 text-center font-medium text-white hover:bg-black">
                  Add to Cart   
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

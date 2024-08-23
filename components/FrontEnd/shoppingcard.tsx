@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
@@ -27,9 +27,11 @@ const ShoppingCard: React.FC = () => {
   useEffect(() => {
     const fetchProductImages = async () => {
       try {
-        const response = await axios.get(
-          "https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce"
-        );
+        const response = await axios.get("http://192.168.1.22:8000/nu-commerce", {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`,
+          },
+        });
         setProductImages(response.data);
       } catch (error) {
         console.error("Error fetching product images:", error);
@@ -41,10 +43,7 @@ const ShoppingCard: React.FC = () => {
 
   useEffect(() => {
     // Calculate subtotal
-    const calculatedSubtotal = productImages.reduce(
-      (acc, product) => acc + product.price,
-      0
-    );
+    const calculatedSubtotal = productImages.reduce((acc, product) => acc + (Number(product.price) || 0), 0);
     setSubtotal(calculatedSubtotal);
 
     // Set a fixed shipping rate or calculate based on the products
@@ -69,6 +68,10 @@ const ShoppingCard: React.FC = () => {
   const handleCheckout = () => {
     // Implement checkout logic here
     alert("Proceeding to checkout");
+  };
+
+  const handleRemove = (index: number) => {
+    setProductImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
   return (
@@ -150,9 +153,16 @@ const ShoppingCard: React.FC = () => {
                         <p className="text-xs leading-3 underline text-gray-800 dark:text-white cursor-pointer">
                           Add to favorites
                         </p>
-                        <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
+                        <p
+                          className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                          onClick={() => handleRemove(index)}
+                        >
+                          Remove
+                        </p>
                       </div>
-                      <p className="text-base font-black leading-none text-gray-800 dark:text-white">{image.price}</p>
+                      <p className="text-base font-black leading-none text-gray-800 dark:text-white">
+                        M{(Number(image.price) || 0).toFixed(2)}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -168,7 +178,7 @@ const ShoppingCard: React.FC = () => {
                     <p className="text-base leading-none text-gray-800 dark:text-white">M{subtotal.toFixed(2)}</p>
                   </div>
                   <div className="flex items-center justify-between pt-5">
-                    <p className="text-base leading-none text-gray-800 dark:text-white">Delivery</p>
+                    <p className="text-base leading-none text-gray-800 dark:text-white">Local Delivery</p>
                     <p className="text-base leading-none text-gray-800 dark:text-white">M{shipping.toFixed(2)}</p>
                   </div>
                   <div className="flex items-center justify-between pt-5">
@@ -176,14 +186,14 @@ const ShoppingCard: React.FC = () => {
                     <p className="text-base leading-none text-gray-800 dark:text-white">M{tax.toFixed(2)}</p>
                   </div>
                 </div>
-                <div>
-                  <div className="flex items-center pb-6 justify-between lg:pt-5 pt-20">
-                    <p className="text-2xl leading-normal text-gray-800 dark:text-white pt-1 flex items-center">Total</p>
-                    <p className="text-2xl font-bold leading-normal text-right text-gray-800 dark:text-white">M{total.toFixed(2)}</p>
+                <div className="pt-12">
+                  <div className="flex items-center justify-between pt-5">
+                    <p className="lg:text-3xl text-xl font-black leading-9 text-gray-800 dark:text-white">Total</p>
+                    <p className="lg:text-3xl text-xl font-black leading-9 text-gray-800 dark:text-white">M{total.toFixed(2)}</p>
                   </div>
                   <button
-                    className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
                     onClick={handleCheckout}
+                    className="w-full py-4 px-6 mt-10 bg-gray-800 dark:bg-gray-600 text-white text-base font-semibold leading-none rounded-md"
                   >
                     Checkout
                   </button>
@@ -192,24 +202,6 @@ const ShoppingCard: React.FC = () => {
             </div>
           </div>
         </div>
-        <style>
-          {`
-            /* width */
-            #scroll::-webkit-scrollbar {
-              width: 1px;
-            }
-
-            /* Track */
-            #scroll::-webkit-scrollbar-track {
-              background: #f1f1f1;
-            }
-
-            /* Handle */
-            #scroll::-webkit-scrollbar-thumb {
-              background: rgb(133, 132, 132);
-            }
-          `}
-        </style>
       </div>
     </div>
   );

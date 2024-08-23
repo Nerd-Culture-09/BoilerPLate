@@ -4,6 +4,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 
 interface CartStore {
     items: Product[];
+
     addItem: (data: Product) => void;
     removeItem: (id: string) => void;
     removeAll: () => void;
@@ -14,8 +15,21 @@ const useCart = create<CartStore>()(
         (set, get) => ({
             items: [],
             addItem: (data: Product) => {
+                // Check if 'data' and 'data._id' are defined
+                if (!data || !data._id) {
+                    console.error("Data or data._id is undefined:", data);
+                    return;
+                }
+
                 const currentItems = get().items;
-                const existingItem = currentItems.find((item) => item._id === data._id);
+
+                // Ensure 'currentItems' is defined and is an array
+                if (!Array.isArray(currentItems)) {
+                    console.error("Current items are not an array or are undefined:", currentItems);
+                    return;
+                }
+
+                const existingItem = currentItems.find((item) => item?._id === data._id);
 
                 if (existingItem) {
                     set((state) => ({
@@ -30,6 +44,11 @@ const useCart = create<CartStore>()(
                 }
             },
             removeItem: (id: string) => {
+                if (!id) {
+                    console.error("Item ID is undefined or invalid:", id);
+                    return;
+                }
+
                 set((state) => ({
                     items: state.items.filter((item) => item._id !== id),
                 }));

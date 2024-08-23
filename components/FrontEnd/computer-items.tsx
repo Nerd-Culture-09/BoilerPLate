@@ -20,7 +20,12 @@ export function ComputerStock() {
 
   async function fetchProducts() {
     try {
-      const response = await axios.get<Product[]>('https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce/');
+      const response = await axios.get<Product[]>("http://192.168.1.22:8000/nu-commerce",
+        {headers :
+        {
+          "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`
+      }
+      });
       setProducts(response.data);
     } catch (error) {
       console.error('Failed to fetch products:', error);
@@ -37,7 +42,7 @@ export function ComputerStock() {
     title: product.name,  // Assuming `title` is a property of `Product`
     price: product.price.toString(),  // Convert price to string
     src: product.thumbnail,  // Assuming `image` is a property of `Product`
-    content: <Overview description={product.description} selectedImage={product.thumbnail} />,  // Adjust as needed
+    content: <Overview description={product.description} selectedImage={product.thumbnail} data={undefined} />,  // Adjust as needed
   }));
 
   const cards = data.map((card, index) => (

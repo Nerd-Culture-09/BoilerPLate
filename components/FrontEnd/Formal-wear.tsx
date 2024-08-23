@@ -20,7 +20,12 @@ export function FormalProducts() {
 
   async function fetchProducts() {
     try {
-      const response = await axios.get<Product[]>('https://nu-com-0e51cf02b2c8.herokuapp.com/nu-commerce/');
+      const response = await axios.get<Product[]>("http://192.168.1.22:8000/nu-commerce",
+        {headers :
+        {
+          "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`
+      }
+      });
       setProducts(response.data);
     } catch (error) {
       console.error('Failed to fetch products:', error);
