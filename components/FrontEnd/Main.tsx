@@ -6,6 +6,8 @@ import Partners from "./Partners"
 import Feacture from "./Feacture"
 import Productlist from "./productlists"
 import ProductListView from "./ProductListVew"
+import Vstore from "./Vstore"
+
 
 // Hero => Main
 export default function Main() {
@@ -19,6 +21,7 @@ export default function Main() {
         </div>
       <CategoryOverview />
       <Feacture/>
+     
       <ProductListView />
       <Partners />
       </div>

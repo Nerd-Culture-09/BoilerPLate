@@ -111,7 +111,7 @@ const ShoppingCard: React.FC = () => {
                 </svg>
                 <p className="text-sm pl-2 leading-none dark:hover:text-gray-200">Back</p>
               </div>
-              <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Hoodie</p>
+              <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Products</p>
 
               {productImages.map((image, index) => (
                 <div key={index} className="md:flex items-stretch py-8 md:py-10 lg:py-8 border-t border-gray-50">

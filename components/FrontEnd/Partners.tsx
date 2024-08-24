@@ -1,4 +1,5 @@
 import React from "react"
+import { Cover } from "../ui/cover"
 
 export default function Partners() {
     return (
@@ -6,11 +7,13 @@ export default function Partners() {
             <div className="max-w-screen-xl mx-auto px-4 md:px-8">
                 <div className="max-w-xl mx-auto text-center">
                     <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                        Who's using V-Mol?
+                        Who&apos;s using V-Mol?
                     </h3>
-                    <p className="text-gray-600 mt-3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim nibh nisl, vel egestas magna rhoncus at. Nunc elementum efficitur tortor in laoreet.
+                    <div>
+                    <p className="text-gray-600 mt-3 text-2xl">
+                        <Cover>OUR PARTNERS</Cover>
                     </p>
+                    </div>
                 </div>
                 <div className="mt-12 flex justify-center">
                     <ul className="inline-grid grid-cols-2 gap-x-10 gap-y-6 md:gap-x-16 md:grid-cols-3 lg:grid-cols-4">

@@ -12,6 +12,7 @@ import { UserDropdown } from './UserDropdown'
 import { Stores } from '@/components/FrontEnd/Stores'
 import Link from 'next/link'
 import useCart from '@/app/(front)/store'
+import Image from 'next/image'
 
 
 const navigation = {
@@ -83,8 +84,10 @@ export default function Navbar() {
         <div className="ml-4 flex lg:ml-0">
           <Link href="/">
             <span className="sr-only">V-Mol</span>
-            <img
+            <Image
               alt=""
+              width={50}
+              height={50}
               src="/logo.png"
               className="h-8 w-auto"
             />
@@ -128,9 +131,11 @@ export default function Navbar() {
 
           <div className="hidden lg:ml-8 lg:flex">
             <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
-              <img
+              <Image
                 alt=""
-                src="les.png"
+                width={50}
+                height={50}
+                src="/les.png"
                 className="block h-auto w-5 flex-shrink-0"
               />
               <span className="ml-3 block text-sm font-medium">LES</span>
