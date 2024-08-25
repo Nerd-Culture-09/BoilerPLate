@@ -11,7 +11,7 @@ export default function Carousel() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const slides: Slide[] = [
-    { id: 0, src: "/lab.png"},
+    { id: 0, src: "/sale.jpg"},
     { id: 1, src: "/vsto.jpg"},
     
   ];
