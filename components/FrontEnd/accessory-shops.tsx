@@ -45,7 +45,7 @@ const AccessoryShops = () => {
             </div>
         </div>
         </div>
-        <Footer />
+    
     </div>
   )
 }

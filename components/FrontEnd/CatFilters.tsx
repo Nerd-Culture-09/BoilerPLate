@@ -20,7 +20,6 @@ import Image from 'next/image'
 
 const sortOptions = [
   { name: 'Most Popular', value: 'popular' },
-  { name: 'Best Rating', value: 'rating' },
   { name: 'Newest', value: 'newest' },
   { name: 'Price: Low to High', value: 'price_low' },
   { name: 'Price: High to Low', value: 'price_high' },
