@@ -1,11 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react';
-import Cookie from 'js-cookie';
-import Carousel from "./Carousel";
-import CategoryOverview from "./CategoryOverview";
-import Partners from "./Partners";
-import ProductListView from "./ProductListVew";
+import Carousel from "./Carousel"
+import CategoryOverview from "./CategoryOverview"
+import Partners from "./Partners"
+import Feacture from "./Feacture"
+import Productlist from "./productlists"
+import ProductListView from "./ProductListVew"
+import Vstore from "./Vstore"
+
 
 export default function Main() {
   const [showCookieConsent, setShowCookieConsent] = useState(!Cookie.get('cookieConsent'));
@@ -38,6 +40,13 @@ export default function Main() {
           <ProductListView />
           <Partners />
         </div>
+
+      <CategoryOverview />
+      <Feacture/>
+     
+      <ProductListView />
+      <Partners />
+      </div>
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

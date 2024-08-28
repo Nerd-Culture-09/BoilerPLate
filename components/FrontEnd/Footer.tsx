@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { useState } from 'react';
+
+import Image from "next/image"
 
 export default function Footer() {
     const [cookieConsent, setCookieConsent] = useState(false);
@@ -80,9 +80,13 @@ export default function Footer() {
             <div className="gap-6 justify-between md:flex">
                 <div className="flex-1">
                     <div className="max-w-xs">
-                        <img src="/logo.png" className="w-20" />
+                        <Image 
+                            width={50}
+                            height={50}
+                            src="/logo.png"
+                            className="w-20" alt={""} />
                         <p className="leading-relaxed mt-2 text-[15px]">
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                           
                         </p>
                     </div>
                     <form onSubmit={(e) => e.preventDefault()}>
@@ -125,7 +129,7 @@ export default function Footer() {
             </div>
             <div className="mt-8 py-6 border-t items-center justify-between sm:flex">
                 <div className="mt-4 sm:mt-0">
-                    &copy; 2022 Float UI All rights reserved.
+                    &copy; 2024 Nucleus rights reserved.
                 </div>
                 <div className="mt-6 sm:mt-0">
                     <ul className="flex items-center space-x-4">

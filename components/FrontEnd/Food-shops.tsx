@@ -46,7 +46,7 @@ const FoodShops = () => {
             </div>
         </div>
         </div>
-        <Footer />
+    
     </div>
   )
 }

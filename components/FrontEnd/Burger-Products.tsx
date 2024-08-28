@@ -31,21 +31,21 @@ const data = [
     title: "Double Cheese Chicken",
     price: "M30.00",
     src: "/burger1.jpg",
-    content: <Overview selectedImage={"/burger1.jpg"} />,
+    content: <Overview selectedImage={"/burger1.jpg"} description={""} data={undefined} />,
   },
   {
     category: "Burgers",
     title: "Beef + Bacon ",
     price: "M40.00",
     src: "/burger2.jpg",
-    content: <Overview selectedImage={"/burger2.jpg"} />,
+    content: <Overview selectedImage={"/burger2.jpg"} description={""} data={undefined} />,
   },
   {
     category: "Burgers",
     title: "Royal Deal",
     price: "M50.00",
     src: "/burger3.jpg",
-    content: <Overview selectedImage={"/burger3.jpg"} />,
+    content: <Overview selectedImage={"/burger3.jpg"} description={""} data={undefined} />,
   },
 
 ];
