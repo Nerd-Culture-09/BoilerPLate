@@ -1,5 +1,6 @@
-import Image from "next/image"
 
+
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -82,13 +83,9 @@ export default function Footer() {
             <div className="gap-6 justify-between md:flex">
                 <div className="flex-1">
                     <div className="max-w-xs">
-                        <Image 
-                            width={50}
-                            height={50}
-                            src="/logo.png"
-                            className="w-20" alt={""} />
+                        <Image alt='halala' src="/logo.png" className="w-20" width={40} height={40} />
                         <p className="leading-relaxed mt-2 text-[15px]">
-                           
+                            Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.
                         </p>
                     </div>
                     <form onSubmit={(e) => e.preventDefault()}>
@@ -131,7 +128,7 @@ export default function Footer() {
             </div>
             <div className="mt-8 py-6 border-t items-center justify-between sm:flex">
                 <div className="mt-4 sm:mt-0">
-                    &copy; 2024 Nucleus rights reserved.
+                    &copy; 2022 Float UI All rights reserved.
                 </div>
                 <div className="mt-6 sm:mt-0">
                     <ul className="flex items-center space-x-4">
@@ -177,4 +174,3 @@ export default function Footer() {
         </footer>
     );
 }
-    
