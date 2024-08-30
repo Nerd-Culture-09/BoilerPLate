@@ -14,13 +14,13 @@ interface BackgroundGradientDemoProps {
 export const BackgroundGradientDemo: React.FC<BackgroundGradientDemoProps> = ({src}) => {
   return (
     <div>
-      <BackgroundGradient className="rounded-[22px] max-w-sm bg-white dark:bg-zinc-900">
+      <BackgroundGradient className="rounded-md max-w-sm bg-white dark:bg-zinc-900">
         <Image
           src={src}
           alt="selected item"
           height="400"
           width="400"
-          className="object-contain rounded-[22px]"
+          className="object-contain rounded-md"
         />
 
       </BackgroundGradient>

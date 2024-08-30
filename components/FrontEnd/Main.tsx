@@ -3,8 +3,11 @@
 import Carousel from "./Carousel"
 import CategoryOverview from "./CategoryOverview"
 import Partners from "./Partners"
+import Feacture from "./Feacture"
 import Productlist from "./productlists"
 import ProductListView from "./ProductListVew"
+import Vstore from "./Vstore"
+
 
 // Hero => Main
 export default function Main() {
@@ -16,7 +19,10 @@ export default function Main() {
         <div className="lg:px-72">
           <Carousel />
         </div>
+
       <CategoryOverview />
+      <Feacture/>
+     
       <ProductListView />
       <Partners />
       </div>

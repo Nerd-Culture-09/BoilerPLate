@@ -1,17 +1,52 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Carousel } from "../ui/apple-cards-carousel";
 import Overview from "./Quickview";
+import { Product } from "@/app/(front)/types";
+import axios from "axios";
+
+// Define the Card type based on what is expected
+type CardType = {
+  category: string;
+  title: string;
+  price: string; // Ensure this is a string
+  src: string;
+  content: React.JSX.Element;
+};
 
 export function CameraItems() {
-  // State to keep track of the selected image source
-  const [selectedImage, setSelectedImage] = useState<string>(data[0].src);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  async function fetchProducts() {
+    try {
+      const response = await axios.get<Product[]>("https://nu-serverless-api.netlify.app/.netlify/functions/api/nu-commerce",
+        {headers :
+        {
+          "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`
+      }
+      });
+      setProducts(response.data);
+    } catch (error) {
+      console.error('Failed to fetch products:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  // Generate data dynamically based on fetched products
+  const data: CardType[] = products.map(product => ({
+    category: product.category,  // Assuming `category` is a property of `Product`
+    title: product.name,  // Assuming `title` is a property of `Product`
+    price: product.price.toString(),  // Convert price to string
+    src: product.thumbnail,  // Assuming `image` is a property of `Product`
+    content: <Overview description={product.description} selectedImage={product.thumbnail} data={undefined} />,  // Adjust as needed
+  }));
 
   const cards = data.map((card, index) => (
-    <div key={index} onClick={() => setSelectedImage(data[index].src)}>
-      <Card key={card.src} card={card} index={index} />
-    </div>
+    <Card key={card.src} card={card} index={index} />
   ));
 
   return (
@@ -20,32 +55,39 @@ export function CameraItems() {
         Nucleus Cam Store
       </h2>
       <Carousel items={cards} />
-      
     </div>
   );
 }
 
-const data = [
-  {
-    category: "Cameras",
-    title: "camera",
-    price: "M2000.00",
-    src: "/camera1.jpg",
-    content: <Overview selectedImage={"/camera1.jpg"} description={"Stylish Cam With Cutting Edge Technology"} />,
-  },
-  {
-    category: "Cameras",
-    title: "Hamon camera",
-    price: "M4250.00",
-    src: "/camera2.jpg",
-    content: <Overview selectedImage={"/camera2.jpg"} description={""} />,
-  },
-  {
-    category: "Cameras",
-    title: "cinema camera ",
-    price: "M5000.00",
-    src: "/camera3.jpg",
-    content: <Overview selectedImage={"/camera3.jpg"} description={""} />,
-  },
-
-];
+// Dummy Content Component
+const DummyContent = () => {
+  return (
+    <>
+      {[...new Array(2).fill(1)].map((_, index) => {
+        return (
+          <div
+            key={"dummy-content" + index}
+            className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4"
+          >
+            <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+              <span className="font-bold text-neutral-700 dark:text-neutral-200">
+                The first rule of Apple club is that you boast about Apple club.
+              </span>{" "}
+              Keep a journal, quickly jot down a grocery list, and take amazing
+              class notes. Want to convert those notes to text? No problem.
+              Langotiya jeetu ka mara hua yaar is ready to capture every
+              thought.
+            </p>
+            <Image
+              src="https://assets.aceternity.com/macbook.png"
+              alt="Macbook mockup from Aceternity UI"
+              height="500"
+              width="500"
+              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};

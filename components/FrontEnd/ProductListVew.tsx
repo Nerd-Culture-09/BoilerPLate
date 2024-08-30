@@ -108,8 +108,7 @@ export default function Productlist() {
         {selectedProduct && (
           <Overview
             selectedImage={selectedProduct.imageSrc}
-            description={selectedProduct.description}
-          />
+            description={selectedProduct.description} data={undefined}          />
         )}
       </Modal>
     </div>
