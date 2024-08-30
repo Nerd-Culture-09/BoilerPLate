@@ -19,6 +19,7 @@ export default function Main() {
         <div className="lg:px-72">
           <Carousel />
         </div>
+
       <CategoryOverview />
       <Feacture/>
      
