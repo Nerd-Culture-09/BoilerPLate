@@ -17,7 +17,7 @@ export default function ShopByBrand() {
 
   // Array of brand images with corresponding links
   const brands = [
-    { image: "/brand.jpg", name: " ", link: "/<legit/>" },
+    { image: "/brand.jpg", name: " ", link: "/legit" },
     { image: "/brandb.jpg", name: " ", link: "/fabiani" },
     { image: "/brandc.jpg", name: " ", link: "/identity" },
     { image: "/brandd.jpg", name: " ", link: "/markham" },

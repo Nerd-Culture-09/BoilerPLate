@@ -21,20 +21,20 @@ const ShopPage = () => {
       <ViewCarousel/>
       
       <div className='mt-10 px-5'>
-      <ProductBanner/>
+      {/* <ProductBanner/> */}
       </div>
       <Shops />
       <div className='px-5'>
       <KidCorousel/>
       </div>
       <div className='px-5'>
-        <WomenClothing/>
+        {/* <WomenClothing/> */}
       </div>
       <div className='px-5'>
         <ShopByBrand/>
       </div>
       <div className='px-5'>
-        <MenClothing/>
+        {/* <MenClothing/> */}
       </div>
      
      

@@ -25,11 +25,11 @@ const sortOptions = [
   { name: 'Price: High to Low', value: 'price_high' },
 ]
 const subCategories = [
-  { name: 'Totes', value: 'totes' },
-  { name: 'Backpacks', value: 'backpacks' },
-  { name: 'Travel Bags', value: 'travel_bags' },
-  { name: 'Hip Bags', value: 'hip_bags' },
-  { name: 'Laptop Sleeves', value: 'laptop_sleeves' },
+  { name: '', value: '' },
+  { name: '', value: '' },
+  { name: '', value: '' },
+  { name: '', value: '' },
+  { name: '', value: '' },
 ]
 const filters = [
   {
@@ -82,13 +82,14 @@ export default function ShopPage() {
   const [products, setProducts] = useState<any[]>([]) 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const fetchProducts = async () => {
     setLoading(true)
     setError(null)
 
     try {
-      const response = await axios.get("http://192.168.1.22:8000/nu-commerce", {
+      const response = await axios.get("https://nu-serverless-api.netlify.app/.netlify/functions/api/nu-commerce", {
         params: {
           sort: selectedSort,
           colors: selectedColors.join(','),
@@ -96,9 +97,10 @@ export default function ShopPage() {
           sizes: selectedSizes.join(','),
         },
         headers: {
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`,
+          "Authorization":`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`
         },
       })
+      setSelectedImage(response.data[0]?.thumbnail || null);
       setProducts(response.data)
     } catch (err) {
       setError('Failed to fetch products')
@@ -109,6 +111,7 @@ export default function ShopPage() {
 
   useEffect(() => {
     fetchProducts()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSort, selectedColors, selectedCategories, selectedSizes])
 
   const handleSortChange = (value: string) => {
@@ -341,10 +344,13 @@ export default function ShopPage() {
                     {products.map(product => (
                       <div key={product.id} className="border border-gray-200 rounded-lg p-4">
                         <Image
-                         src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover" />
+                        width={400}
+                        height={400}
+                        layout=""
+                        src={product.thumbnail} alt={product.name} className="w-32 h-32 object-fit rounded-md" />
                         <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>
                         <p className="text-gray-500">{product.description}</p>
-                        <p className="text-gray-900 font-semibold">${product.price}</p>
+                        <p className="text-gray-900 font-semibold">M{product.price}</p>
                       </div>
                     ))}
                   </div>

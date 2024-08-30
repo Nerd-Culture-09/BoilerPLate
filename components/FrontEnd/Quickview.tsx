@@ -10,27 +10,26 @@ interface OverviewProps {
   data: Product | undefined;
 }
 
-
-const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data}) => {
-
+const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data }) => {
   const cart = useCart();
 
   const addToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    cart.addItem(data as any);
-  }
+
+    if (data) {
+      // Make sure data is defined and of type Product
+      cart.addItem(data);
+    } else {
+      console.error("Product data is undefined.");
+    }
+  };
 
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="pb-5 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-5">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
-           {/*<h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Summer styles are finally here
-            </h1>*/}
-            <p className="mt-4 text-xl text-gray-500">
-              {description}
-            </p>
+            <p className="mt-4 text-xl text-gray-500">{description}</p>
           </div>
           <div>
             <div className="mt-10">
@@ -47,11 +46,11 @@ const Overview: React.FC<OverviewProps> = ({ selectedImage, description, data}) 
                   </div>
                 </div>
               </div>
-                <Button 
+              <Button 
                 onClick={addToCart}
                 className="inline-block rounded-md border border-transparent bg-green-800 text-center font-medium text-white hover:bg-black">
-                 Add to Cart   
-                </Button>
+                Add to Cart
+              </Button>
             </div>
           </div>
         </div>

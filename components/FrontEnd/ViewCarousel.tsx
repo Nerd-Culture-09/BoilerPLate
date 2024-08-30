@@ -34,7 +34,7 @@ export default function ShopByDepartment() {
                       className="flex flex-col items-center"
                     >
                       <div className="text-1xl">{category.icon}</div>
-                      <span className="text-l text-neutral-600 dark:text-neutral-200 font-sans">
+                      <span className="text-l text-neutral-600 dark:text-neutral-200 font-sans transition duration-300 ease-in-out hover:text-blue-600 dark:hover:text-blue-400">
                         {category.label}
                       </span>
                     </a>

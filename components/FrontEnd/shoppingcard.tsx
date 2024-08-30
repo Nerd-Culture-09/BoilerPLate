@@ -1,15 +1,14 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import useCart from "@/app/(front)/store"; // Import Zustand store
 
 interface ProductImage {
+  _id: string;
   defaultImage: string;
-  hoverImage: string;
-  sideImage: string;
-  backImage: string;
-  price: number;
+  price: string; // Price as a string
   name: string;
 }
 
@@ -21,6 +20,7 @@ const ShoppingCard: React.FC = () => {
   const [total, setTotal] = useState(0);
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
+  const cart = useCart(); // Use Zustand store hook
 
   useEffect(() => {
     setIsMounted(true);
@@ -31,7 +31,7 @@ const ShoppingCard: React.FC = () => {
       try {
         const response = await axios.get("http://192.168.1.22:8000/nu-commerce", {
           headers: {
-            "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`,
+            "Authorization":`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTIzYzFkODYxYzI3OTkxOTZiMzFkNiIsIm5hbWUiOiJSZXRzZXBpbGUgU2hhbyIsImVtYWlsIjoicmV0c2VwaWxlLnJheW1vbmRzaGFvQGdtYWlsLmNvbSIsImlhdCI6MTcyMjM1MDA3MH0.ppuoQ_GYjNqAw-5fCsgruYRp2lzJIzqDYx07uDzZRbM`,
           },
         });
         setProductImages(response.data);
@@ -44,22 +44,26 @@ const ShoppingCard: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Calculate subtotal
-    const calculatedSubtotal = productImages.reduce((acc, product) => acc + (Number(product.price) || 0), 0);
+    const calculateSubtotal = () => {
+      return cart.items.reduce((acc, item) => {
+        const priceStr = typeof item.price === 'string' ? item.price : String(item.price);
+        const priceValue = parseFloat(priceStr.replace('M', '').replace(',', ''));
+        return !isNaN(priceValue) ? acc + priceValue * item.quantity : acc;
+      }, 0);
+    };
+
+    const calculatedSubtotal = calculateSubtotal();
     setSubtotal(calculatedSubtotal);
 
-    // Set a fixed shipping rate or calculate based on the products
-    const fixedShipping = 50;
+    const fixedShipping = 0; // Example fixed shipping rate
     setShipping(fixedShipping);
 
-    // Calculate tax as 10% of the subtotal
-    const calculatedTax = calculatedSubtotal * 0.1;
+    const calculatedTax = calculatedSubtotal * 0.1; // Example tax rate
     setTax(calculatedTax);
 
-    // Calculate total
     const calculatedTotal = calculatedSubtotal + fixedShipping + calculatedTax;
     setTotal(calculatedTotal);
-  }, [productImages]);
+  }, [cart.items]);
 
   const handleBackClick = () => {
     if (isMounted) {
@@ -71,8 +75,22 @@ const ShoppingCard: React.FC = () => {
     alert("Proceeding to checkout");
   };
 
-  const handleRemove = (index: number) => {
-    setProductImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  const handleRemove = (_id: string) => {
+    cart.removeItem(_id);
+  };
+
+  const handleIncreaseQuantity = (_id: string) => {
+    const item = cart.items.find((item) => item._id === _id);
+    if (item) {
+      cart.updateItemQuantity(_id, item.quantity + 1);
+    }
+  };
+
+  const handleDecreaseQuantity = (_id: string) => {
+    const item = cart.items.find((item) => item._id === _id);
+    if (item) {
+      cart.updateItemQuantity(_id, Math.max(item.quantity - 1, 1));
+    }
   };
 
   return (
@@ -113,63 +131,44 @@ const ShoppingCard: React.FC = () => {
               </div>
               <p className="lg:text-4xl text-3xl font-black leading-10 text-gray-800 dark:text-white pt-3">Products</p>
 
-              {productImages.map((image, index) => (
-                <div key={index} className="md:flex items-stretch py-8 md:py-10 lg:py-8 border-t border-gray-50">
+              {cart.items.map((item) => (
+                <div key={item._id} className="md:flex items-stretch py-8 md:py-10 lg:py-8 border-t border-gray-50">
                   <div className="md:w-4/12 2xl:w-1/4 w-full">
                     <Image
                       width={100}
                       height={100}
-                      src={image.defaultImage}
-                      alt="Product Front Image"
-                      className="h-full object-center object-cover md:block hidden"
-                    />
-                    <Image
-                      width={100}
-                      height={100}
-                      src={image.backImage}
-                      alt="Product Back Image"
-                      className="md:hidden w-full h-full object-center object-cover"
-                    />
-                    <Image
-                      width={100}
-                      height={100}
-                      src={image.sideImage}
-                      alt="Product Side Image"
+                      src={item.image}
+                      alt="Product Image"
                       className="h-full object-center object-cover"
                     />
                   </div>
                   <div className="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
-                    <p className="text-xs leading-3 text-gray-800 dark:text-white md:pt-0 pt-4">Product ID</p>
+                    <p className="text-xs leading-3 text-gray-800 dark:text-white md:pt-0 pt-4">Product Name</p>
                     <div className="flex items-center justify-between w-full pt-1">
-                      <p className="text-base font-black leading-none text-gray-800 dark:text-white">{image.name}</p>
-                      <select
-                        aria-label="Select quantity"
-                        className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
-                      >
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                        <option>05</option>
-                      </select>
-                    </div>
-                    <p className="text-xs leading-3 text-gray-600 dark:text-white pt-2">Height: 10 inches</p>
-                    <p className="text-xs leading-3 text-gray-600 dark:text-white py-4">Color: Black</p>
-                    <p className="w-96 text-xs leading-3 text-gray-600 dark:text-white">Composition: 100% calf leather</p>
-                    <div className="flex items-center justify-between pt-5">
-                      <div className="flex items-center">
-                        <p className="text-xs leading-3 underline text-gray-800 dark:text-white cursor-pointer">
-                          Add to favorites
-                        </p>
-                        <p
-                          className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
-                          onClick={() => handleRemove(index)}
-                        >
-                          Remove
-                        </p>
-                      </div>
+                      <p className="text-base font-black leading-none text-gray-800 dark:text-white">{item.description}</p>
                       <p className="text-base font-black leading-none text-gray-800 dark:text-white">
-                        M{(Number(image.price) || 0).toFixed(2)}
+                        {item.price} x {item.quantity}
+                      </p>
+                    </div>
+                    <div className="flex items-center space-x-4 pt-2">
+                      <button
+                        className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded"
+                        onClick={() => handleDecreaseQuantity(item._id)}
+                      >
+                        -
+                      </button>
+                      <p className="text-base font-black leading-none text-gray-800 dark:text-white">{item.quantity}</p>
+                      <button
+                        className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded"
+                        onClick={() => handleIncreaseQuantity(item._id)}
+                      >
+                        +
+                      </button>
+                      <p
+                        className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer"
+                        onClick={() => handleRemove(item._id)}
+                      >
+                        Remove
                       </p>
                     </div>
                   </div>

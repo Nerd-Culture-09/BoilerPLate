@@ -1,16 +1,5 @@
-"use client";
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  createContext,
-  useContext,
-} from "react";
-import {
-  IconArrowNarrowLeft,
-  IconArrowNarrowRight,
-  IconX,
-} from "@tabler/icons-react";
+import React, { useEffect, useRef, useState, createContext, useContext } from "react";
+import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
@@ -33,7 +22,7 @@ export const CarouselContext = createContext<{
   onCardClose: (index: number) => void;
   currentIndex: number;
 }>({
-  onCardClose: () => { },
+  onCardClose: () => {},
   currentIndex: 0,
 });
 
@@ -151,7 +140,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             </button>
           </div>
         </div>
-
       </div>
     </CarouselContext.Provider>
   );
@@ -160,10 +148,12 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 export const Card = ({
   card,
   index,
+  onAddToCart,
   layout = false,
 }: {
   card: Card;
   index: number;
+  onAddToCart: (card: Card) => void; // Add this prop for handling add to cart
   layout?: boolean;
 }) => {
   const [open, setOpen] = useState(false);
@@ -272,6 +262,12 @@ export const Card = ({
           fill
           className="object-cover absolute z-10 inset-0"
         />
+        <button
+          className="absolute bottom-4 right-4 bg-green-800 text-white rounded-full py-2 px-4 text-sm font-semibold"
+          onClick={() => onAddToCart(card)} // Handle add to cart
+        >
+          Add to Cart
+        </button>
       </motion.button>
     </>
   );

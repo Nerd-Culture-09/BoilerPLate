@@ -20,7 +20,7 @@ import Image from 'next/image';
 
 // Define the types for your API response
 interface Product {
-  id: number;
+  id: number;                                      
   name: string;
   price: number;
   description: string;

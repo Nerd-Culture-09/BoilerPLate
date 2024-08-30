@@ -1,69 +1,68 @@
-import { create } from "zustand";
-import { Product } from "./types";
-import { persist, createJSONStorage } from "zustand/middleware";
+import create from 'zustand';
+import { persist } from 'zustand/middleware';
+
+interface CartItem {
+  _id: string;
+  image: string;
+  description: string;
+  price: string;
+  quantity: number;
+  
+}
 
 interface CartStore {
-    items: Product[];
-
-    addItem: (data: Product) => void;
-    removeItem: (id: string) => void;
-    removeAll: () => void;
+  items: CartItem[];
+  addItem: (item: CartItem) => void;
+  removeItem: (_id: string) => void;
+  updateItemQuantity: (_id: string, quantity: number) => void;
+  getTotalPrice: () => number;
 }
 
 const useCart = create<CartStore>()(
-    persist(
-        (set, get) => ({
-            items: [],
-            addItem: (data: Product) => {
-                // Check if 'data' and 'data._id' are defined
-                if (!data || !data._id) {
-                    console.error("Data or data._id is undefined:", data);
-                    return;
-                }
-
-                const currentItems = get().items;
-
-                // Ensure 'currentItems' is defined and is an array
-                if (!Array.isArray(currentItems)) {
-                    console.error("Current items are not an array or are undefined:", currentItems);
-                    return;
-                }
-
-                const existingItem = currentItems.find((item) => item?._id === data._id);
-
-                if (existingItem) {
-                    set((state) => ({
-                        items: state.items.map((item) =>
-                            item._id === data._id ? { ...item, quantity: item.quantity + 1 } : item
-                        ),
-                    }));
-                } else {
-                    set((state) => ({
-                        items: [...state.items, { ...data, quantity: 1 }],
-                    }));
-                }
-            },
-            removeItem: (id: string) => {
-                if (!id) {
-                    console.error("Item ID is undefined or invalid:", id);
-                    return;
-                }
-
-                set((state) => ({
-                    items: state.items.filter((item) => item._id !== id),
-                }));
-            },
-            removeAll: () => {
-                set(() => ({
-                    items: [],
-                }));
-            },
-        }),
-        {
-            name: "cart-storage", // name of the storage key
-            storage: createJSONStorage(() => localStorage), // define storage method
-        }
-    )
+  persist(
+    (set, get) => ({
+      items: [],
+      addItem: (item) => {
+        set((state) => {
+          const existingItem = state.items.find((i) => i._id === item._id);
+          if (existingItem) {
+            return {
+              items: state.items.map((i) =>
+                i._id === item._id
+                  ? { ...i, quantity: i.quantity + 1 }
+                  : i
+              ),
+            };
+          } else {
+            return { items: [...state.items, { ...item, quantity: 1 }] };
+          }
+        });
+      },
+      removeItem: (_id) => {
+        set((state) => ({
+          items: state.items.filter((item) => item._id !== _id),
+        }));
+      },
+      updateItemQuantity: (_id, quantity) => {
+        set((state) => ({
+          items: state.items.map((item) =>
+            item._id === _id
+              ? { ...item, quantity: Math.max(quantity, 1) }
+              : item
+          ),
+        }));
+      },
+      getTotalPrice: () => {
+        return get().items.reduce(
+          (total, item) => total + parseFloat(item.price.replace('M', '')) * item.quantity,
+          0
+        );
+      },
+    }),
+    {
+      name: 'cart-storage', // unique name
+    }
+  )
 );
 
 export default useCart;

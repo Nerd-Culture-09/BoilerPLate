@@ -1,4 +1,7 @@
 'use client'
+
+
+
 import Footer from '@/components/FrontEnd/Footer'
 import Main from '@/components/FrontEnd/Main'
 import TermsOfService from '@/components/FrontEnd/TermsOfService'

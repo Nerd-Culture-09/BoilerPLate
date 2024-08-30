@@ -1,51 +1,66 @@
-import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
+"use client"
+
+import * as React from "react";
+import { useRouter } from "next/navigation"; // Use next/navigation instead
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
-import Image from "next/image"
+} from "@/components/ui/carousel";
+import Image from "next/image";
 
-export default function CarouselSpacing() {
+export default function LegitClothing() {
+  const router = useRouter(); // Correct usage for server components
+
   // Sample data for products
   const products = [
     {
-      image: "/rain.jpg", // Replace with actual image path
-      description: "Rain boots for kids",
+      id: 1, // Add unique IDs for products
+      image: "/front.jpg", 
+      description: "Legit women wear",
       price: "M190.00",
     },
     {
-      image: "/sandals.jpg", // Replace with actual image path
-      description: "Beautiful girls shoes",
+      id: 2,
+      image: "/legitb.jpeg",
+      description: "Stylish",
       price: "M120.00",
     },
     {
-      image: "/toy.jpg", // Replace with actual image path
-      description: "G-Wagon Powered Car for Kids",
-      price: "M300.00",
+      id: 3,
+      image: "/legitc.jpg",
+      description: "Elegant",
+      price: "M210.00",
     },
     {
-      image: "/coat.jpeg", // Replace with actual image path
-      description: "Rain Coat for Kids",
+      id: 4,
+      image: "/legitf.jpg",
+      description: "Dress your soul",
       price: "M200.00",
     },
     {
-      image: "/casual.jpg", // Replace with actual image path
-      description: "Smart Casual shoes",
-      price: "M500.00",
+      id: 5,
+      image: "/legitg.jpg",
+      description: "Feel the spring",
+      price: "M180.00",
     },
-  ]
+  ];
+
+  const handlePreviewClick = (productId: number) => {
+    // Redirect to the product preview page with the product ID
+    router.push(`/preview/${productId}`);
+  };
 
   return (
     <div className="mt-10 px-64">
-      <h2 className="text-center text-1xl  mb-6">Nucleus Kid&apos;s Gear</h2>
+      <h2 className="text-center text-1xl mb-6">Clothing</h2>
       <Carousel>
         <CarouselContent className="-ml-1">
-          {products.map((product, index) => (
-            <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+          {products.map((product) => (
+            <CarouselItem key={product.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
               <div className="p-1">
                 <Card>
                   <CardContent className="flex flex-col items-center justify-center p-4">
@@ -53,18 +68,19 @@ export default function CarouselSpacing() {
                       width={400}
                       height={400}
                       src={product.image}
-                      alt={`Product ${index + 1}`}
-                      className="w-full h-48 object-cover mb-4 rounded-xl" // Adjust size as needed
+                      alt={product.description}
+                      className="w-full h-48 object-cover mb-4 rounded-xl"
                     />
                     <p className="text-center text-lg font-medium mb-2">
                       {product.description}
                     </p>
                     <div className="flex items-center justify-between w-full">
-                      <p className="text-l text-green-600">
-                        {product.price}
-                      </p>
-                      <button className="ml-4 px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700">
-                        Add to Cart
+                      <p className="text-l text-green-600">{product.price}</p>
+                      <button
+                        className="ml-4 px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700"
+                        onClick={() => handlePreviewClick(product.id)}
+                      >
+                        Preview
                       </button>
                     </div>
                   </CardContent>
@@ -77,5 +93,5 @@ export default function CarouselSpacing() {
         <CarouselNext />
       </Carousel>
     </div>
-  )
+  );
 }
