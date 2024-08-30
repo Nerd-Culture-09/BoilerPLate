@@ -4,12 +4,10 @@ import {
   Popover,
   PopoverButton,
   PopoverGroup,
-  PopoverPanel,
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { UserDropdown } from './UserDropdown'
-import { Stores } from '@/components/FrontEnd/Stores'
 import Link from 'next/link'
 import useCart from '@/app/(front)/store'
 import Image from 'next/image'

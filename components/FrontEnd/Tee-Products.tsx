@@ -47,7 +47,7 @@ export function TeeProducts() {
   }));
 
   const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
+    <Card onAddToCart={()=>(console.log(""))} key={card.src} card={card} index={index} />
   ));
 
   return (

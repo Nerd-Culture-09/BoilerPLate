@@ -10,7 +10,7 @@ import Vstore from "./Vstore"
 
 
 // Hero => Main
-export default function Main() {
+export default function Shops_Main() {
   return (
     <div className="">
       <div className="relative isolate px-6 pt-14 lg:px-8">
