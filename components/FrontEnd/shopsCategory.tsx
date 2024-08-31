@@ -4,7 +4,6 @@ import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import { Button } from "../ui/moving-border";
 import Link from "next/link";
 
 export default function ShopsCategory() {

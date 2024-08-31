@@ -8,7 +8,6 @@ const Shops = () => {
     const imageUrl = "/hoodie-img.jpg";
     const imageUrl2 = "/tees-img.jpg";
     const imageUrl3 = "/formal.jpg";
-  
     return (
         <div className="py-5">
             <div className="lg:px-72">

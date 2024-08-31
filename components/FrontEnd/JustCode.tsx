@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import {
   IconArrowLeft,
-  IconBrandTabler,
   IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react";
@@ -155,15 +154,15 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
         <div className="fixed rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-            <div className="absolute -mt-3 z-[999] w-[68%] left-[10%]">
-                <div className="flex items-center gap-5">
+            <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
+                <div className="sm:flex hidden  items-center gap-5">
                     <PlaceholdersAndVanishInput
                         placeholders={placeholders}
                         onChange={()=>(console.log(""))}
                         onSubmit={()=>(console.log(""))}
                     />
                     <div className="mt-5">
-                        <Shops_cartogories />
+                        {/* <ShopsTab /> */}
                     </div>
                 </div>
             </div>
@@ -172,30 +171,3 @@ const Dashboard = () => {
     </div>
   );
 };
-
-const Shops_cartogories = () => {
-    const [urlOption, setUrlOption] = useState<string>("all");
-    const searchParams = useSearchParams();
-
-    useEffect(() => {
-        const option = searchParams.get('set') || "all";
-        setUrlOption(option);
-    }, [searchParams]);
-
-    const getClassNames = (option: string) =>
-        option === urlOption
-          ? "text-blue-700 hover:text-white border bg-blue-700 text-white border-blue-600 bg-white hover:bg-blue-700 focus:ring-4  focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800"
-          : "border border-white hover:border-gray-200  dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 ring-gray-300 text-gray-600 ring-2 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300  rounded-full font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800";
-
-    return (
-        <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
-          {['all', 'clothing', 'food', 'accessories'].map((option) => (
-            <Link key={option} href={`?set=${option}`}>
-              <button type="button" className={getClassNames(option)}>
-                {option.charAt(0).toUpperCase() + option.slice(1)}
-              </button>
-            </Link>
-          ))}
-        </div>
-    );
-}

@@ -137,7 +137,7 @@ const ShoppingCard: React.FC = () => {
                     <Image
                       width={100}
                       height={100}
-                      src={item.image}
+                      src={item.image_one}
                       alt="Product Image"
                       className="h-full object-center object-cover"
                     />

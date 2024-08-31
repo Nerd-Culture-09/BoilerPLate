@@ -10,9 +10,7 @@ export default function Partners() {
                         Who&apos;s using V-Mol?
                     </h3>
                     <div>
-                    
-                        <Cover>OUR PARTNERS</Cover>
-                    
+                      <Cover>OUR PARTNERS</Cover>
                     </div>
                 </div>
                 <div className="mt-12 flex justify-center">

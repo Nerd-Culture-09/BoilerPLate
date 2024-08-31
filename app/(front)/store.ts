@@ -1,18 +1,10 @@
-import create from 'zustand';
+import {create} from 'zustand';
 import { persist } from 'zustand/middleware';
-
-interface CartItem {
-  _id: string;
-  image: string;
-  description: string;
-  price: string;
-  quantity: number;
-  
-}
+import { Product } from './types';
 
 interface CartStore {
-  items: CartItem[];
-  addItem: (item: CartItem) => void;
+  items: Product[];
+  addItem: (item: Product) => void;
   removeItem: (_id: string) => void;
   updateItemQuantity: (_id: string, quantity: number) => void;
   getTotalPrice: () => number;
@@ -54,13 +46,16 @@ const useCart = create<CartStore>()(
       },
       getTotalPrice: () => {
         return get().items.reduce(
-          (total, item) => total + parseFloat(item.price.replace('M', '')) * item.quantity,
+          (total, item) => {
+            const price = parseFloat(item.price.toString().replace('M', ''));
+            return total + price * item.quantity;
+          },
           0
         );
       },
     }),
     {
-      name: 'cart-storage', // unique name
+      name: 'cart-storage',
     }
   )
 );

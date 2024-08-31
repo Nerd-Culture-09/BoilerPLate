@@ -2,41 +2,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Carousel } from "../ui/apple-cards-carousel";
-import Overview from "./Quickview";
 import useCart from "@/app/(front)/store"; // Import the useCart store
+import { nu_commerce_base_url } from "@/Constants";
+import { Product } from "@/app/(front)/types";
 
-interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  quantity: number;
-  price: number;
-  size: string;
-  category: string;
-  subcategory: string;
-  status: string;
-  color: string;
-  thumbnail: string;
-  image_one: string;
-  image_two: string;
-  image_three: string;
-}
-
-// Define CartItem interface according to the store
-interface CartItem {
-  _id: string;
-  image: string;
-  description: string;
-  price: string;
-  quantity: number;
-}
 
 export function Products() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>();
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [cartMessage, setCartMessage] = useState<string | null>(null); // State for cart message
 
   const cart = useCart(); // Access the cart store
@@ -45,7 +19,7 @@ export function Products() {
     async function fetchProducts() {
       setLoading(true);
       try {
-        const response = await axios.get<Product[]>("https://nu-serverless-api.netlify.app/.netlify/functions/api/nu-commerce", {
+        const response = await axios.get<Product[]>(`${nu_commerce_base_url}/nu-commerce`, {
           headers: {
             "Authorization": `Bearer <YOUR_TOKEN_HERE>`,
           },
@@ -64,12 +38,21 @@ export function Products() {
 
   const addToCart = (product: Product) => {
     // Map Product to CartItem
-    const cartItem: CartItem = {
-      _id: product._id,
-      image: product.thumbnail || product.thumbnail, // Use either `thumbnail` or another appropriate image
+    const cartItem: Product = {
+      _id : product._id,
+      name: product.name,
       description: product.description,
-      price: `M${product.price}`, // Convert price to string format expected in CartItem
-      quantity: 1, // Default quantity is 1 or adjust as needed
+      quantity: product.quantity,
+      price: product.price,
+      size: product.size,
+      category: product.category,
+      subcategory: product.subcategory,
+      status: product.status,
+      color:  product.color,
+      thumbnail:  product.thumbnail,
+      image_one: product.image_one,
+      image_two: product.image_two,
+      image_three: product.image_three
     };
 
     cart.addItem(cartItem); // Add the mapped cart item to the cart
@@ -137,31 +120,27 @@ const data = [
     title: "Black Nucleus Hoodie.",
     price: "M300.00",
     src: "/NucleusBlackHoodie.jpg",
-    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"}  description="" />,
-    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"}  description={"Black Nucleus Hoodie."} />,
+
   },
   {
     category: "Hoodies",
     title: "Greige Nucleus Hoodie.",
     price: "M300",
     src: "/NucleusBrownHoodie.png",
-    content: <Overview selectedImage={"/NucleusBrownHoodie.png"}  description="" />,
-    content: <Overview selectedImage={"/NucleusBrownHoodie.png"}   description={"Greige Nucleus Hoodie"} />,
+
   },
   {
     category: "Sweater",
     title: "White Nucleus Sweater.",
     price: "M300",
     src: "/white.jpg",
-    content: <Overview selectedImage={"/white.jpg"}  description="" />,
-    content: <Overview selectedImage={"/white.jpg"}  description={"White Nucleus Hoodie"} />,
+
   },
   {
     category: "Sweater",
     title: "Peach Nucleus Sweater.",
     price: "M300",
     src: "/NucleusPeachHoodie.jpg",
-    content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} description="" />,
-    content: <Overview selectedImage={"/NucleusPeachHoodie.jpg"} description={"Peach Nucleus Hoodie"} />,
+
   },
 ];

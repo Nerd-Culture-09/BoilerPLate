@@ -26,11 +26,9 @@ const Feacture = () => {
           img={item.img}
           title={item.title}
           desc={item.desc} />
-
             ))}
        </div>
     </div>
-  
 };
 
 export default Feacture

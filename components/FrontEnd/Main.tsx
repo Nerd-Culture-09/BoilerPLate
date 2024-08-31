@@ -1,30 +1,24 @@
 'use client'
-
 import Carousel from "./Carousel"
-import CategoryOverview from "./CategoryOverview"
-import Partners from "./Partners"
-import Feacture from "./Feacture"
-import Productlist from "./productlists"
-import ProductListView from "./ProductListVew"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
+import { ShopsBentoGrid } from "./ShopsBentoGrid"
 
 
 // Hero => Main
 export default function Shops_Main() {
   return (
     <ScrollArea className="h-full w-full ">
-      <div className="relative isolate">
-      <div className="w-full">
-        <div className=" ">
-          <Carousel />
+      <div className="relative isolate w-full">
+        <div className="w-full">
+          <div className="flex justify-center w-full">
+            <div className="lg:w-[70%] w-full lg:py-5">
+              <Carousel />
+            </div>
+          </div>
+          <div className="w-[100%]">
+            <ShopsBentoGrid />
+          </div>
         </div>
-        <CategoryOverview />
-        <Feacture/>
-     
-      <ProductListView />
-      <Partners />
-      </div>
         <div
           aria-hidden="true"
           className=" absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
