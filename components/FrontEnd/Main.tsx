@@ -6,22 +6,21 @@ import Partners from "./Partners"
 import Feacture from "./Feacture"
 import Productlist from "./productlists"
 import ProductListView from "./ProductListVew"
-import Vstore from "./Vstore"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator"
 
 
 // Hero => Main
 export default function Shops_Main() {
   return (
-    <div className="">
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+    <ScrollArea className="h-full w-full ">
+      <div className="relative isolate">
       <div className="w-full">
-        {/* Carousel must function well in every devices */}
-        <div className="lg:px-72">
+        <div className=" ">
           <Carousel />
         </div>
-
-      <CategoryOverview />
-      <Feacture/>
+        <CategoryOverview />
+        <Feacture/>
      
       <ProductListView />
       <Partners />
@@ -52,6 +51,6 @@ export default function Shops_Main() {
           />
         </div>
       </div>
-    </div>
+    </ScrollArea>
   )
 }
