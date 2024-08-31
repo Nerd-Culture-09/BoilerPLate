@@ -5,7 +5,6 @@ const products = [
   {
     id: 1,
     name: 'Nucleus Hoodie',
-    content: <Overview selectedImage={"/NucleusBlackHoodie.jpg"} description={"Hoodie"}/>,
     //href: '/overview',
     imageSrc: '/NucleusBlackHoodie.jpg',
     imageAlt: "Front of men's Basic Tee in black.",

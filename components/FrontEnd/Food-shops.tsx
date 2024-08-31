@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link";
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
-import Footer from "./Footer"
 
 const FoodShops = () => {
     const imageUrl = "/burger-home.jpg";
@@ -46,7 +45,7 @@ const FoodShops = () => {
             </div>
         </div>
         </div>
-        <Footer />
+    
     </div>
   )
 }

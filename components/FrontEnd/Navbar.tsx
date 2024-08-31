@@ -1,14 +1,16 @@
 'use client'
-
 import {
   Popover,
   PopoverButton,
   PopoverGroup,
-  PopoverPanel,
 } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { useState } from 'react'
 import { UserDropdown } from './UserDropdown'
+import Link from 'next/link'
+import useCart from '@/app/(front)/store'
+import Image from 'next/image'
+
 
 const navigation = {
   categories: [
@@ -51,7 +53,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Stores', href: '#' },
+    { name: 'Stores', href: '/stores' }, // Link to the Stores page
   ],
 }
 
@@ -60,6 +62,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const cart = useCart();
   const [open, setOpen] = useState(false)
   return (
     <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -76,14 +79,16 @@ export default function Navbar() {
         </button>
         {/* Logo */}
         <div className="ml-4 flex lg:ml-0">
-          <a href="/">
+          <Link href="/">
             <span className="sr-only">V-Mol</span>
-            <img
+            <Image
               alt=""
+              width={50}
+              height={50}
               src="/logo.png"
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
         </div>
         {/* Flyout menus */}
         <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
@@ -123,9 +128,11 @@ export default function Navbar() {
 
           <div className="hidden lg:ml-8 lg:flex">
             <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
-              <img
+              <Image
                 alt=""
-                src="les.png"
+                width={50}
+                height={50}
+                src="/les.png"
                 className="block h-auto w-5 flex-shrink-0"
               />
               <span className="ml-3 block text-sm font-medium">LES</span>
@@ -143,15 +150,16 @@ export default function Navbar() {
 
           {/* Cart */}
           <div className="ml-4 flow-root lg:ml-6">
-            <a href="#" className="group -m-2 flex items-center p-2">
+            <Link href="/cart" className="group -m-2 flex items-center p-2" style={{zIndex:9999}}>
               <ShoppingBagIcon
                 aria-hidden="true"
                 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                style={{zIndex:9999}}
               />
-              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-              <span className="sr-only">items in cart, view bag</span>
+              <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cart.items.length}</span>
+              <span className="sr-only" style={{zIndex:9999}}>items in cart, view bag</span>
               <UserDropdown/>
-            </a>
+            </Link>
             
           </div>
         </div>

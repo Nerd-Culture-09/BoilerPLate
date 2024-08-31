@@ -1,7 +1,6 @@
 'use client'
 import Link from "next/link";
 import { DirectionAwareHover } from "../ui/direction-aware-hover";
-import Footer from "./Footer"
 
 const AccessoryShops = () => {
     const imageUrl = "/camera.jpg";
@@ -45,8 +44,9 @@ const AccessoryShops = () => {
             </div>
         </div>
         </div>
-        <Footer />
+    
     </div>
   )
 }
+
 export default AccessoryShops;
