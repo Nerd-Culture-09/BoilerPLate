@@ -155,12 +155,14 @@ const Dashboard = () => {
     <div className="flex flex-1">
         <div className="fixed rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
             <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
-                <div className="sm:flex hidden  items-center gap-5">
+                <div className="flex  items-center gap-5">
+                  <div className="-mt-3 w-screen lg:mt-20">
                     <PlaceholdersAndVanishInput
                         placeholders={placeholders}
                         onChange={()=>(console.log(""))}
                         onSubmit={()=>(console.log(""))}
                     />
+                  </div>
                     <div className="mt-5">
                         {/* <ShopsTab /> */}
                     </div>
