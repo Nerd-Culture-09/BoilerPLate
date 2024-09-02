@@ -46,8 +46,6 @@ import { Crumbs } from "@/components/FrontEnd/Crumbs";
 
 export function Main() {
   const cart = useCart();
-  
-
   const links = [
     {
       label: "cart",
@@ -81,28 +79,6 @@ export function Main() {
         </Link>
       ),
     },
-    // {
-    //   label: "",
-    //   href: "#",
-    //   icon: (
-    //     // <ShoppingBagIcon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-    //     <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-    //   ),
-    // },
-    // {
-    //   label: "Usage Guide",
-    //   href: "#",
-    //   icon: (
-    //     <Link2 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
-    //   ),
-    // },
-    // {
-    //   label: "Opportunities",
-    //   href: "#",
-    //   icon: (
-    //     <Link2 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
-    //   ),
-    // },
   ];
   const [open, setOpen] = useState(false);
   return (

@@ -56,9 +56,9 @@ export function Main() {
         // <ShoppingBagIcon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
         <Link href="/cart" className="group -m-2 flex items-center p-2" style={{zIndex:9999}}>
             <ShoppingBagIcon
-            aria-hidden="true"
-            className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-            style={{zIndex:9999}}
+              aria-hidden="true"
+              className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+              style={{zIndex:9999}}
             />
             <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cart.items.length}</span>
             <span className="sr-only" style={{zIndex:9999}}>items in cart, view bag</span>
