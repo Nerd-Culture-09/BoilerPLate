@@ -1,10 +1,10 @@
 // Tremor Raw Drawer [v0.0.0]
 
-import { cx, focusRing } from "@/lib/cx"
 import * as DrawerPrimitives from "@radix-ui/react-dialog"
 import { RiCloseLine } from "@remixicon/react"
 import * as React from "react"
 import { Button } from "./ui/button"
+import { cx, focusRing } from "@/lib/utils"
 
 const Drawer = (
   props: React.ComponentPropsWithoutRef<typeof DrawerPrimitives.Root>,
@@ -82,7 +82,6 @@ const DrawerContent = React.forwardRef<
             "bg-white dark:bg-[#090E1A]",
             // transition
             "data-[state=closed]:animate-drawerSlideRightAndFade data-[state=open]:animate-drawerSlideLeftAndFade",
-            focusRing,
             className,
           )}
           {...props}

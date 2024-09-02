@@ -41,6 +41,8 @@ import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import useCart from "@/app/(front)/store";
 import { PlaceholdersAndVanishInput } from "./placeholders-and-vanish-input";
 import { Calendar, Divide, DivideCircle, LampDesk, Link2 } from "lucide-react";
+import { Crumbs } from "./Crumbs";
+import { usePathname } from "next/navigation";
 
 export function Main() {
   const cart = useCart();
@@ -79,28 +81,6 @@ export function Main() {
         </Link>
       ),
     },
-    // {
-    //   label: "",
-    //   href: "#",
-    //   icon: (
-    //     // <ShoppingBagIcon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-    //     <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-    //   ),
-    // },
-    // {
-    //   label: "Usage Guide",
-    //   href: "#",
-    //   icon: (
-    //     <Link2 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
-    //   ),
-    // },
-    // {
-    //   label: "Opportunities",
-    //   href: "#",
-    //   icon: (
-    //     <Link2 className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
-    //   ),
-    // },
   ];
   const [open, setOpen] = useState(false);
   return (
@@ -265,6 +245,7 @@ export const LogoIcon = () => {
 
 // Dummy dashboard component with content
 const Dashboard = () => {
+  const pathname = usePathname();
   const placeholders = [
     "What's the first rule of Fight Club?",
     "Who is Tyler Durden?",
@@ -275,18 +256,23 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
         <div className="fixed rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-            <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
-                <div className="flex  items-center gap-5">
-                  <div className="-mt-3 w-screen lg:mt-20">
-                    <PlaceholdersAndVanishInput
-                      placeholders={placeholders}
-                      onChange={()=>(console.log(""))}
-                      onSubmit={()=>(console.log(""))}
-                    />
-                  </div>
+          <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
+              <div className="flex  items-center gap-5">
+                <div className="-mt-3 w-screen lg:mt-20">
+                  {pathname !== "/" && (
+                    <div className="-mt-2 pb-1 -ml-9">
+                      <Crumbs />
+                    </div>
+                  )}
+                  <PlaceholdersAndVanishInput
+                    placeholders={placeholders}
+                    onChange={()=>(console.log(""))}
+                    onSubmit={()=>(console.log(""))}
+                  />
                 </div>
-            </div>
-            <Shops_Main />
+              </div>
+          </div>
+          <Shops_Main />
         </div>
     </div>
   );

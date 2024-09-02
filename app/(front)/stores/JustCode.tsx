@@ -41,6 +41,8 @@ import { Calendar, Divide, DivideCircle, LampDesk, Link2 } from "lucide-react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/FrontEnd/sidebar";
 import { PlaceholdersAndVanishInput } from "@/components/FrontEnd/placeholders-and-vanish-input";
 import HeroVideoDialogDemoTopInBottomOut from "./HeroProducts";
+import { usePathname } from "next/navigation";
+import { Crumbs } from "@/components/FrontEnd/Crumbs";
 
 export function Main() {
   const cart = useCart();
@@ -265,6 +267,7 @@ export const LogoIcon = () => {
 
 // Dummy dashboard component with content
 const Store = () => {
+  const pathname = usePathname();
   const placeholders = [
     "What's the first rule of Fight Club?",
     "Who is Tyler Durden?",
@@ -278,6 +281,9 @@ const Store = () => {
             <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
                 <div className="flex  items-center gap-5">
                   <div className="-mt-3 w-screen lg:mt-20">
+                    <div className="-mt-2 pb-1 -ml-9">
+                      <Crumbs />
+                    </div>
                     <PlaceholdersAndVanishInput
                       placeholders={placeholders}
                       onChange={()=>(console.log(""))}
