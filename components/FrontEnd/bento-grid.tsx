@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "../ui/scroll-area";
 
 export const BentoGrid = ({
   className,
@@ -8,14 +9,18 @@ export const BentoGrid = ({
   children?: React.ReactNode;
 }) => {
   return (
+    <ScrollArea className="h-full w-full ">
     <div
       className={cn(
         "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
         className
       )}
     >
+
       {children}
+
     </div>
+    </ScrollArea>
   );
 };
 

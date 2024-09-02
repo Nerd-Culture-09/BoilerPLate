@@ -35,12 +35,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Sidebar, SidebarBody, SidebarLink } from "./sidebar";
-import Shops_Main from "./Main";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import useCart from "@/app/(front)/store";
-import { PlaceholdersAndVanishInput } from "./placeholders-and-vanish-input";
 import { Calendar, Divide, DivideCircle, LampDesk, Link2 } from "lucide-react";
+import { Sidebar, SidebarBody, SidebarLink } from "@/components/FrontEnd/sidebar";
+import { PlaceholdersAndVanishInput } from "@/components/FrontEnd/placeholders-and-vanish-input";
+import HeroVideoDialogDemoTopInBottomOut from "./HeroProducts";
 
 export function Main() {
   const cart = useCart();
@@ -231,7 +231,7 @@ export function Main() {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Store />
     </div>
   );
 }
@@ -264,7 +264,7 @@ export const LogoIcon = () => {
 };
 
 // Dummy dashboard component with content
-const Dashboard = () => {
+const Store = () => {
   const placeholders = [
     "What's the first rule of Fight Club?",
     "Who is Tyler Durden?",
@@ -286,7 +286,7 @@ const Dashboard = () => {
                   </div>
                 </div>
             </div>
-            <Shops_Main />
+            <HeroVideoDialogDemoTopInBottomOut />
         </div>
     </div>
   );

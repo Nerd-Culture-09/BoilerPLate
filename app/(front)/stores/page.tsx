@@ -1,21 +1,10 @@
-"use client"
-import Feacture from '@/components/FrontEnd/Feacture'
-import Footer from '@/components/FrontEnd/Footer'
-import ShopsCategory from '@/components/FrontEnd/shopsCategory'
-import Vstore from '@/components/FrontEnd/Vstore'
 import React from 'react'
+import { Main } from './JustCode'
 
-export default function page() {
+const page = () => {
   return (
-    <div>
-      <div className="lg:px-72 mt-20">
-     <Vstore/>
-     </div> 
-     <div className=" justify-center">
-      <ShopsCategory/> 
-      <Feacture/>
-     </div>
-    </div>
+    <Main />
   )
 }
 
+export default page
