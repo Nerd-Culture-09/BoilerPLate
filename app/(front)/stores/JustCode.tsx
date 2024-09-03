@@ -16,7 +16,6 @@ import {
   UserPlus,
   Users,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,19 +34,17 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Sidebar, SidebarBody, SidebarLink } from "./sidebar";
-import Shops_Main from "./Main";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import useCart from "@/app/(front)/store";
-import { PlaceholdersAndVanishInput } from "./placeholders-and-vanish-input";
 import { Calendar, Divide, DivideCircle, LampDesk, Link2 } from "lucide-react";
-import { Crumbs } from "./Crumbs";
+import { Sidebar, SidebarBody, SidebarLink } from "@/components/FrontEnd/sidebar";
+import { PlaceholdersAndVanishInput } from "@/components/FrontEnd/placeholders-and-vanish-input";
+import HeroVideoDialogDemoTopInBottomOut from "./HeroProducts";
 import { usePathname } from "next/navigation";
+import { Crumbs } from "@/components/FrontEnd/Crumbs";
 
 export function Main() {
   const cart = useCart();
-  
-
   const links = [
     {
       label: "cart",
@@ -56,9 +53,9 @@ export function Main() {
         // <ShoppingBagIcon className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
         <Link href="/cart" className="group -m-2 flex items-center p-2" style={{zIndex:9999}}>
             <ShoppingBagIcon
-              aria-hidden="true"
-              className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-              style={{zIndex:9999}}
+            aria-hidden="true"
+            className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+            style={{zIndex:9999}}
             />
             <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{cart.items.length}</span>
             <span className="sr-only" style={{zIndex:9999}}>items in cart, view bag</span>
@@ -211,7 +208,7 @@ export function Main() {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Store />
     </div>
   );
 }
@@ -244,7 +241,7 @@ export const LogoIcon = () => {
 };
 
 // Dummy dashboard component with content
-const Dashboard = () => {
+const Store = () => {
   const pathname = usePathname();
   const placeholders = [
     "What's the first rule of Fight Club?",
@@ -256,23 +253,21 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
         <div className="fixed rounded-tl-2xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-          <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
-              <div className="flex  items-center gap-5">
-                <div className="-mt-3 w-screen lg:mt-20">
-                  {pathname !== "/" && (
+            <div className="absolute -mt-3 z-[999] w-[68%] left-[15%]">
+                <div className="flex  items-center gap-5">
+                  <div className="-mt-3 w-screen lg:mt-20">
                     <div className="-mt-2 pb-1 -ml-9">
                       <Crumbs />
                     </div>
-                  )}
-                  <PlaceholdersAndVanishInput
-                    placeholders={placeholders}
-                    onChange={()=>(console.log(""))}
-                    onSubmit={()=>(console.log(""))}
-                  />
+                    <PlaceholdersAndVanishInput
+                      placeholders={placeholders}
+                      onChange={()=>(console.log(""))}
+                      onSubmit={()=>(console.log(""))}
+                    />
+                  </div>
                 </div>
-              </div>
-          </div>
-          <Shops_Main />
+            </div>
+            <HeroVideoDialogDemoTopInBottomOut />
         </div>
     </div>
   );

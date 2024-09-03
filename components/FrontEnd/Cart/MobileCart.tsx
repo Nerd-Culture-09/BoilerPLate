@@ -4,16 +4,45 @@ import Link, { LinkProps } from "next/link";
 import React, { useState, createContext, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { StretchHorizontal } from "lucide-react";
-import { Drawer, DrawerBody, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "../Drawer";
+import { Drawer, DrawerBody, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "../../Drawer";
 import { RiHome2Line, RiLinkM, RiListCheck, RiSettings5Line } from "@remixicon/react";
 import { siteConfig } from "@/app/siteConfig";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { CrumbsForMenu } from "./CrumbsOnMenu";
-import useCart from "@/app/(front)/store";
-import { Shopingcard } from "./shoppingcard";
-import DrawerDemo from "@/app/(front)/cart/page";
+import { CrumbsForMenu } from "../CrumbsOnMenu";
 
+const navigation = [
+  { name: "Overview now", href: siteConfig.baseLinks.overview, icon: RiHome2Line },
+  { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
+  {
+    name: "Settings",
+    href: siteConfig.baseLinks.settings,
+    icon: RiSettings5Line,
+  },
+] as const
+
+const shortcuts = [
+  {
+    name: "Add new user",
+    href: "#",
+    icon: RiLinkM,
+  },
+  {
+    name: "Workspace usage",
+    href: "#",
+    icon: RiLinkM,
+  },
+  {
+    name: "Cost spend control",
+    href: "#",
+    icon: RiLinkM,
+  },
+  {
+    name: "Overview – Rows written",
+    href: "#",
+    icon: RiLinkM,
+  },
+] as const
 interface Links {
   label: string;
   href: string;
@@ -32,7 +61,6 @@ const SidebarContext = createContext<SidebarContextProps | undefined>(
 
 export const useSidebar = () => {
   const context = useContext(SidebarContext);
-
   if (!context) {
     throw new Error("useSidebar must be used within a SidebarProvider");
   }
@@ -83,7 +111,7 @@ export const SidebarBody = (props: React.ComponentProps<typeof motion.div>) => {
   return (
     <>
       <DesktopSidebar {...props} />
-      <MobileSidebar {...(props as React.ComponentProps<"div">)} />
+      <MobileCart {...(props as React.ComponentProps<"div">)} />
     </>
   );
 };
@@ -114,54 +142,19 @@ export const DesktopSidebar = ({
   );
 };
 
-export const MobileSidebar = ({
+export const MobileCart = ({
   className,
   children,
   ...props
 }: React.ComponentProps<"div">) => {
   const { open, setOpen } = useSidebar();
   const pathname = usePathname()
-  const cart = useCart();
-
   const isActive = (itemHref: string) => {
     if (itemHref === siteConfig.baseLinks.settings) {
       return pathname.startsWith("/settings")
     }
     return pathname === itemHref || pathname.startsWith(itemHref)
   }
-
-  const navigation = [
-    // { name: `${cart.items.length}`, href: siteConfig.baseLinks.overview, icon: DrawerDemo },
-    { name: "Details", href: siteConfig.baseLinks.details, icon: RiListCheck },
-    {
-      name: "Settings",
-      href: siteConfig.baseLinks.settings,
-      icon: RiSettings5Line,
-    },
-  ] as const
-  
-  const shortcuts = [
-    {
-      name: "Add new user",
-      href: "#",
-      icon: RiLinkM,
-    },
-    {
-      name: "Workspace usage",
-      href: "#",
-      icon: RiLinkM,
-    },
-    {
-      name: "Cost spend control",
-      href: "#",
-      icon: RiLinkM,
-    },
-    {
-      name: "Overview – Rows written",
-      href: "#",
-      icon: RiLinkM,
-    },
-  ] as const
   return (
     <>
       <div
@@ -200,10 +193,6 @@ export const MobileSidebar = ({
                   className="flex flex-1 flex-col space-y-10"
                 >
                   <ul role="list" className="space-y-1.5">
-                    <div className="flex pl-2 gap-2">
-                      <DrawerDemo />
-                      {cart.items.length}
-                    </div>
                     {navigation.map((item) => (
                       <li key={item.name}>
                         <DrawerClose asChild>

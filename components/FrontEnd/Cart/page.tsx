@@ -1,10 +1,9 @@
 import React from 'react'
+import { MobileCart } from './MobileCart'
 
 const Page = () => {
-  return (
-    <div>
-      hello world
-    </div>
+return (
+    <MobileCart /> 
   )
 }
 
