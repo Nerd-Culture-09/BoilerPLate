@@ -10,6 +10,7 @@ import { BentoGrid, BentoGridItem } from "../bento-grid";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Product } from "@/app/(front)/types";
 import axios from "axios";
+import NuLoad from "../Nu-Load";
 
 export function BentoGridProduct() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -18,6 +19,7 @@ export function BentoGridProduct() {
   useEffect(() => {
     // Fetch data from the API
     const fetchProducts = async () => {
+        setLoading(true)
         try {
           const response = await axios.get('https://nu-serverless-api.netlify.app/.netlify/functions/api/nu-commerce');
           setProducts(response.data); // Set the data to state
@@ -31,7 +33,13 @@ export function BentoGridProduct() {
     fetchProducts();
 }, []);
   return (
-    <ScrollArea className="h-[40%] lg:h-full w-full ">
+    <>
+    {loading ? 
+    <div className="absolute top-0 lg:h-full w-full ">
+      <NuLoad /> 
+    </div>
+    :
+     <ScrollArea className="h-[40%] lg:h-full w-full ">
       <BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
         {products.map((item, i) => (
           <BentoGridItem
@@ -44,7 +52,8 @@ export function BentoGridProduct() {
           />
         ))}
       </BentoGrid>
-    </ScrollArea>
+    </ScrollArea>}
+    </>
   );
 }
 const SkeletonFour = ({image, title, price, discription}:{image:any,discription:any, title:any, price:any }) => {
