@@ -5,7 +5,7 @@ import React from 'react'
 const NuLoad = () => {
   return (
     <div className="w-screen h-screen flex justify-center items-center relative">
-        <Loader2 strokeWidth={0.5} className="animate-spin" size={200} />
+        <Loader2 strokeWidth={0.5} className="animate-spin text-blue-600" size={200} />
         <div className="absolute">
             <Image
                 src="/nu.png"

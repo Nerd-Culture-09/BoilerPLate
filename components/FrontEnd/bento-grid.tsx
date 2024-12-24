@@ -57,7 +57,8 @@ export const BentoGridItem = ({
       {header}
       <div className="px-5 group-hover/bento:translate-x-2 transition duration-200">
         {icon}
-        <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
+        <div className="
+        font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
           {title}
         </div>
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
@@ -72,52 +73,52 @@ export const BentoGridItem = ({
     </DrawerHeader>
     <DrawerBody>
     <Card
-              className="overflow-hidden" x-chunk="dashboard-07-chunk-4"
-            >
-              <CardHeader>
-                <CardTitle>Product Images</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-2">
-                  <Image
-                    alt="Product image"
-                    className="aspect-square w-full rounded-md object-cover"
-                    height="300"
-                    src="/b.jpeg"
-                    width="300"
-                  />
-                  <div className="grid grid-cols-3 gap-2">
-                    <button>
-                      <Image
-                        alt="Product image"
-                        className="aspect-square w-full rounded-md object-cover"
-                        height="84"
-                        src="/aman.jpg"
-                        width="84"
-                      />
-                    </button>
-                    <button>
-                      <Image
-                        alt="Product image"
-                        className="aspect-square w-full rounded-md object-cover"
-                        height="84"
-                        src="/a.jpg"
-                        width="84"
-                      />
-                    </button>
-                    <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                    <Image
-                        alt="Product image"
-                        className="aspect-square w-full rounded-md object-cover"
-                        height="84"
-                        src="/akiid.jpg"
-                        width="84"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+      className="overflow-hidden" x-chunk="dashboard-07-chunk-4"
+    >
+      <CardHeader>
+        <CardTitle>Product Images</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="grid gap-2">
+          <Image
+            alt="Product image"
+            className="aspect-square w-full rounded-md object-cover"
+            height="300"
+            src="/b.jpeg"
+            width="300"
+          />
+          <div className="grid grid-cols-3 gap-2">
+            <button>
+              <Image
+                alt="Product image"
+                className="aspect-square w-full rounded-md object-cover"
+                height="84"
+                src="/aman.jpg"
+                width="84"
+              />
+            </button>
+            <button>
+              <Image
+                alt="Product image"
+                className="aspect-square w-full rounded-md object-cover"
+                height="84"
+                src="/a.jpg"
+                width="84"
+              />
+            </button>
+            <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
+            <Image
+                alt="Product image"
+                className="aspect-square w-full rounded-md object-cover"
+                height="84"
+                src="/akiid.jpg"
+                width="84"
+              />
+            </button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
     </DrawerBody>
     <DrawerFooter className="mt-6">
       <DrawerClose asChild>

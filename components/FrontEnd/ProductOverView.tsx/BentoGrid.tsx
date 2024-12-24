@@ -79,10 +79,9 @@ const SkeletonFour = ({image, title, price, discription}:{image:any,discription:
   };
   return (
 <div className="">
-    <div className="flex flex-1 w-screen lg:w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2">
-      <motion.div
-        variants={first}
-        className="h-full w-full rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex flex-col items-center justify-center"
+    <div className="w-screen lg:w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-row space-x-2">
+      <div
+        className="h-full w-full rounded-2xl bg-white p-4 dark:bg-black dark:border-white/[0.1] border border-neutral-200 flex items-center gap-5 pl-5"
       >
         <Image
           src={image}
@@ -91,13 +90,15 @@ const SkeletonFour = ({image, title, price, discription}:{image:any,discription:
           width="100"
           className=""
         />
-        <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
-          {title}
-        </p>
-        <p className="   text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
-          M{price}.00
-        </p>
-      </motion.div>
+        <div>
+          <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
+            {title}
+          </p>
+          <p className="   text-red-600 text-xs rounded-full px-2 py-0.5 mt-4">
+            M{price}.00
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   );
